@@ -1,0 +1,92 @@
+/* This styles the whole page */
+body {
+    background-color: #9be0f5; /* Light grey background */
+    font-family: Arial, sans-serif;
+    color: #f50f0f;
+    text-align: center;
+    padding: 50px;
+}
+
+/* This styles your profile image */
+img {
+    border-radius: 50%; /* Makes the image a circle */
+    border: 5px solid #0ed31f; /* Adds a blue border */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* This styles your main heading */
+h1 {
+    color: #804ff1;
+    font-size: 3rem;
+}
+
+/* This styles your list to look cleaner */
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    background: white;
+    margin: 10px auto;
+    padding: 10px;
+    width: 200px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+}
+
+nav {
+    display: flex;             /* The Magic Word: Flexbox */
+    justify-content: space-between; /* Pushes Logo to left, Links to right */
+    align-items: center;
+    background-color: #333;
+    padding: 10px 5px;
+    color: rgb(18, 230, 35);
+    position: fixed;           /* Keeps it at the top while scrolling */
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;     /* Removes the underline */
+    margin-left: 30px;
+    font-weight: bold;
+}
+
+/* Add a hover effect! */
+nav a:hover {
+    color: #007bff;
+}
+
+/* This class only turns on when we tell it to */
+.dark-mode {
+    background-color: #1a1a1a !important;
+    color: #f4f4f9 !important;
+}
+
+#mode-toggle {
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px;
+}
+
+@media (max-width: 600px) {
+    nav {
+        flex-direction: column; /* Stack logo and links vertically */
+        padding: 10px;
+    }
+    
+    nav .links {
+        margin-top: 10px;
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Shrink the text so it fits */
+    }
+}
