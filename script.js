@@ -66,6 +66,29 @@ function orderViaWhatsApp(itemName, itemPrice) {
 }
 
 // Function for Search Bar
+function filterCategory(category) {
+    const cards = document.querySelectorAll('.project-card');
+    const buttons = document.querySelectorAll('.btn-filter');
+    
+    // Update button highlighting
+    buttons.forEach(btn => {
+        btn.classList.remove('active');
+        if (btn.innerText.toLowerCase() === category.toLowerCase()) {
+            btn.classList.add('active');
+        }
+    });
+
+    // Show/Hide cards based on category text
+    cards.forEach(card => {
+        const cardText = card.innerText.toLowerCase();
+        if (category === 'all' || cardText.includes(category.toLowerCase())) {
+            card.style.display = "block";
+        } else {
+            card.style.display = "none";
+        }
+    });
+}
+
 function filterProducts() {
     const searchValue = document.getElementById('product-search').value.toLowerCase();
     const cards = document.querySelectorAll('.project-card');
@@ -91,6 +114,5 @@ function filterProducts() {
         noResults.style.display = "none";
     }
 }
-
 
 
