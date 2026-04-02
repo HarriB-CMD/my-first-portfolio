@@ -1,9 +1,12 @@
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- This tells WhatsApp what image to show in the preview link -->
+<meta property="og:title" content="Sister's Boutique">
+<meta property="og:description" content="Check out my latest clothes and appliances!">
+<meta property="og:image" content="https://netlify.app">
+<meta property="og:url" content="https://netlify.app">
+
     <meta charset="UTF-8">
     <title>CHRISWALD</title>
     <link rel="stylesheet" href="style.css">
@@ -37,7 +40,28 @@
 </nav>
 <section id="shop">
     <h2>CHRISWALD & Home</h2>
+
+<section id="filter-section">
+    <!-- The Search Bar -->
+    <div class="search-container">
+        <input type="text" id="product-search" placeholder="Search clothes or appliances..." onkeyup="filterProducts()">
+    </div>
+
+    <!-- Category Filters -->
+    <div class="category-buttons">
+        <button class="btn-filter active" onclick="filterCategory('all')">All</button>
+        <button class="btn-filter" onclick="filterCategory('Clothes')">Clothes</button>
+        <button class="btn-filter" onclick="filterCategory('Appliances')">Appliances</button>
+    </div>
+</section>
+
+
     <div id="product-container" class="project-grid">
+        <div id="no-results" style="display: none; text-align: center; padding: 20px;">
+    <h3>Sorry! 🛍️</h3>
+    <p>We couldn't find any products matching that search.</p>
+</div>
+
         <!-- JavaScript will inject the products here! -->
     </div>
 </section>

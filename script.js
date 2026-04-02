@@ -43,20 +43,54 @@ products.forEach(product => {
     container.innerHTML += card;
 });
 
-// 4. This is the logic that opens WhatsApp
 function sendOrder(name, price) {
-    const message = `Hello, I want to buy the ${name} for $${price}. Is it available?`;
-    const whatsappUrl = `https://wa.me{sisterPhone}?text=${encodeURIComponent(message)}`;
+    // We add the item name clearly so she knows exactly which one it is
+    const message = `ORDER ALERT! 🛒\nItem: ${name}\nPrice: $${price}\n\nI want to buy Is this still available please?`;
+    
+    const whatsappUrl = `https://wa.me/233540252006?text=${encodeURIComponent(message)}`;
     
     window.open(whatsappUrl, '_blank');
 }
 
+
+
+
+
 function orderViaWhatsApp(itemName, itemPrice) {
     const message = `Hello! I would like to order the ${itemName} for $${itemPrice}. Is it still available?`;
     const encodedMessage = encodeURIComponent(message);
-    const whatsappUrl = `https://wa.me{phoneNumber}?text=${encodedMessage}`;
+    const whatsappUrl = `https://wa.me/233540252006?text=${encodedMessage}`;
     
     // This opens the WhatsApp link in a new tab
     window.open(whatsappUrl, '_blank');
 }
+
+// Function for Search Bar
+function filterProducts() {
+    const searchValue = document.getElementById('product-search').value.toLowerCase();
+    const cards = document.querySelectorAll('.project-card');
+    const noResults = document.getElementById('no-results');
+    
+    let visibleCount = 0; // Keep track of matches
+
+    cards.forEach(card => {
+        const title = card.querySelector('h3').innerText.toLowerCase();
+        
+        if (title.includes(searchValue)) {
+            card.style.display = "block";
+            visibleCount++; // Found one!
+        } else {
+            card.style.display = "none";
+        }
+    });
+
+    // If no products match, show the "No Results" message
+    if (visibleCount === 0) {
+        noResults.style.display = "block";
+    } else {
+        noResults.style.display = "none";
+    }
+}
+
+
 

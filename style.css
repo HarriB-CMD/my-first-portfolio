@@ -139,3 +139,39 @@ input, textarea {
     max-width: 300px; 
     margin: 0 auto;
 }
+
+#filter-section {
+    margin: 30px auto;
+    max-width: 600px;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--primary-color);
+    border-radius: 25px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    outline: none;
+}
+
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.btn-filter {
+    padding: 8px 20px;
+    border: 1px solid var(--primary-color);
+    background: transparent;
+    color: var(--primary-color);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-filter.active, .btn-filter:hover {
+    background: var(--primary-color);
+    color: white;
+}
