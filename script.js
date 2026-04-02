@@ -1,3 +1,4 @@
+// 1. The list of her products
 const products = [
     { 
         name: "Vintage Denim Jacket", 
@@ -20,27 +21,42 @@ const products = [
 ];
 
 
-
-const btn = document.getElementById('mode-toggle');
-
-btn.addEventListener('click', function() {
-    // This "toggles" the dark-mode class on the body tag
-    document.body.classList.toggle('dark-mode');
-});
+// 2. HER PHONE NUMBER (Put her actual number here, no '+' or spaces)
+const sisterPhone = "233540252006"; // e.g., 233541234567
 
 const container = document.getElementById('product-container');
 
+// 3. This is the "forEach" loop that creates the cards
 products.forEach(product => {
-    // Create the HTML for each product card
     const card = `
         <div class="project-card">
-            <img src="${product.img}" style="width:100%; border-radius: 8px;">
+            <img src="${product.img}">
             <h3>${product.name}</h3>
-            <p>Category: ${product.category}</p>
             <p><strong>$${product.price}</strong></p>
-            <button class="btn-small" onclick="alert('Added to cart!')">Add to Cart</button>
+            
+            <!-- This button calls the function below when clicked -->
+            <button class="btn-small" onclick="sendOrder('${product.name}', ${product.price})">
+                Order via WhatsApp
+            </button>
         </div>
     `;
-    // Put it inside the container
     container.innerHTML += card;
 });
+
+// 4. This is the logic that opens WhatsApp
+function sendOrder(name, price) {
+    const message = `Hello, I want to buy the ${name} for $${price}. Is it available?`;
+    const whatsappUrl = `https://wa.me{sisterPhone}?text=${encodeURIComponent(message)}`;
+    
+    window.open(whatsappUrl, '_blank');
+}
+
+function orderViaWhatsApp(itemName, itemPrice) {
+    const message = `Hello! I would like to order the ${itemName} for $${itemPrice}. Is it still available?`;
+    const encodedMessage = encodeURIComponent(message);
+    const whatsappUrl = `https://wa.me{phoneNumber}?text=${encodedMessage}`;
+    
+    // This opens the WhatsApp link in a new tab
+    window.open(whatsappUrl, '_blank');
+}
+
