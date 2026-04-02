@@ -1,6 +1,14 @@
+:root {
+    --primary-color: #007bff;
+    --dark-bg: #1a1a1a;
+    --light-bg: #f4f4f9;
+    --text-color: #333;
+}
+
+
 /* This styles the whole page */
 body {
-    background-color: #9be0f5; /* Light grey background */
+    background-color: #50e682; /* Light grey background */
     font-family: Arial, sans-serif;
     color: #f50f0f;
     text-align: center;
@@ -92,20 +100,42 @@ nav a:hover {
 }
 
 #contact {
-    margin-top: 50px;
-    padding: 30px;
-    background: #eef2f3;
+    margin-top: 30px;
+    padding: 10px;
+    background: #41caec;
     border-radius: 10px;
 }
 
 form p {
-    margin-bottom: 15px;
+    margin-bottom: 5px;
 }
 
 input, textarea {
-    width: 100%;
+    width: 30%;
     padding: 10px;
     margin-top: 5px;
-    border: 1px solid #ccc;
+    border: 1px solid #e4a2a2;
     border-radius: 4px;
+}
+
+#product-container img {
+    height: 250px;       /* Keeps all images the same height */
+    object-fit: cover;   /* Crops the image so it doesn't look squashed */
+    margin-bottom: 15px;
+
+}
+/* This targets the images inside your shop/project cards */
+.project-card img {
+    width: 100%;           /* Fills the width of the card */
+    height: 250px;         /* Sets a fixed height so they aren't "long" */
+    object-fit: cover;     /* The Magic: Crops the photo so it isn't squashed */
+    object-position: center; /* Keeps the middle of the photo visible */
+    border-radius: 8px 8px 0 0; /* Rounds only the top corners */
+    display: block;
+}
+
+/* Optional: Make the card itself smaller if it feels too big */
+.project-card {
+    max-width: 300px; 
+    margin: 0 auto;
 }
