@@ -175,3 +175,19 @@ input, textarea {
     background: var(--primary-color);
     color: white;
 }
+
+
+
+/* The style that turns on when the button is clicked */
+.dark-mode {
+    background-color: var(--dark-bg) !important;
+    color: white !important;
+}
+
+/* Also make sure the cards look good in dark mode */
+.dark-mode .project-card {
+    background-color: #333;
+    color: white;
+    border: 1px solid #444;
+}
+

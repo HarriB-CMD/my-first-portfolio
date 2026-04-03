@@ -79,4 +79,12 @@ function filterProducts() {
     }
 }
 
+// 7. Dark Mode Logic
+const modeBtn = document.getElementById('mode-toggle');
+
+if (modeBtn) {
+    modeBtn.addEventListener('click', function() {
+        document.body.classList.toggle('dark-mode');
+    });
+}
 
