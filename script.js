@@ -1,6 +1,6 @@
 // 1. The list of products
 const products = [
-    { name: "Vintage Denim Jacket", price: 45.00, category: "Clothes", img: "images/1.jpg" },
+    { name: "Vintage Denim Jacket", price: 45.00, category: "Clothes", img: "images/7.jpg" },
     { name: "Smart Air Fryer", price: 120.00, category: "Appliances", img: "images/2.jpg" },
     { name: "Summer Floral Dress", price: 35.00, category: "Clothes", img: "images/3.jpg" },
     
@@ -26,13 +26,15 @@ const sisterPhone = "233540252006";
 const container = document.getElementById('product-container');
 
 // 3. Create the cards - (I added the <p> for category so the filter works!)
+// 3. Create the cards
 products.forEach(product => {
     const card = `
         <div class="project-card">
             <img src="${product.img}">
             <h3>${product.name}</h3>
             <p style="color: gray; font-size: 0.8rem;">${product.category}</p> 
-            <p><strong>$${product.price}</strong></p>
+            <!-- Changed $ to GH₵ below -->
+            <p><strong>GH₵ ${product.price}</strong></p>
             <button class="btn-small" onclick="sendOrder('${product.name}', ${product.price})">
                 Order via WhatsApp
             </button>
@@ -40,6 +42,7 @@ products.forEach(product => {
     `;
     container.innerHTML += card;
 });
+
 
 // 4. WhatsApp Logic
 function sendOrder(name, price) {

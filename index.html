@@ -15,8 +15,9 @@
 
 </head>
 <body>
-
+<header id="Home">
     <h1>CHRISWALD IMPORTS AND COLLECTIONS</h1>
+</header>
     <button id="mode-toggle">Switch Theme</button>
 
     
@@ -34,13 +35,15 @@
     <nav>
     <div class="logo">CHRISWALD WORLD</div>
     <div class="links">
-        <a href="#">Home</a>
-        <a href="#">About</a>
-        <a href="#">Contact</a>
+        <a href="#Home">Home</a>
+        <a href="#About">About</a>
+        <a href="#Contact">Contact</a>
     </div>
 </nav>
 <section id="shop">
     <h2>CHRISWALD & Home</h2>
+
+   
 
 <section id="filter-section">
     <!-- The Search Bar -->
@@ -68,6 +71,28 @@
         <!-- JavaScript will inject the products here! -->
     </div>
 </section>
+
+<!-- ADD THIS BELOW YOUR SHOP SECTION -->
+
+<section id="About" style="padding: 50px; text-align: center;">
+    <h2>About CHRISWALD</h2>
+    <p>Welcome to CHRISWALD Imports and Collections. We specialize in bringing high-quality clothes, home appliances, and shoes directly to you. Our mission is to provide premium goods at affordable prices.</p>
+</section>
+
+<section id="Contact" style="padding: 50px; text-align: center; background-color: #f9f9f9;">
+    <h2>Contact Us</h2>
+    <p>Have a question? Feel free to reach out!</p>
+    
+    <!-- This is the Netlify form we built earlier -->
+    <form name="contact" method="POST" data-netlify="true" style="max-width: 400px; margin: 0 auto;">
+        <p><input type="text" name="name" placeholder="Your Name" required></p>
+        <p><input type="email" name="email" placeholder="Your Email" required></p>
+        <p><textarea name="message" placeholder="Your Message" required></textarea></p>
+        <p><button type="submit" class="btn-filter">Send Message</button></p>
+    </form>
+</section>
+
+<!-- END OF NEW SECTIONS -->
 
 
 <script src="script.js"></script>
