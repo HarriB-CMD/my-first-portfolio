@@ -38,6 +38,12 @@ products.forEach(product => {
             <button class="btn-small" onclick="sendOrder('${product.name}', ${product.price})">
                 Order via WhatsApp
             </button>
+            
+            <button class="btn-small" style="background-color: #333;" onclick="window.location.href='tel:+233540252006'">
+    Call to Order</button>
+
+
+            
         </div>
     `;
     container.innerHTML += card;
@@ -49,7 +55,9 @@ function sendOrder(name, price) {
     const message = `ORDER ALERT! 🛒\nItem: ${name}\nPrice: $${price}\n\nIs this available please?`;
     const whatsappUrl = `https://wa.me/233540252006?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
+
 }
+
 
 // 5. Category Filter Logic
 function filterCategory(category) {
