@@ -4,7 +4,7 @@ html {
 
 
 :root {
-    --primary-color: #007bff;
+    --primary-color: #f53d3d;
     --dark-bg: #1a1a1a;
     --light-bg: #f4f4f9;
     --text-color: #333;
@@ -13,7 +13,7 @@ html {
 
 /* This styles the whole page */
 body {
-    background-color: #11e1f0; /* Light grey background */
+    background-color: #2de4f1; /* Light grey background */
     font-family: Arial, sans-serif;
     color: #f50f0f;
     text-align: center;
@@ -23,13 +23,13 @@ body {
 /* This styles your profile image */
 img {
     border-radius: 50%; /* Makes the image a circle */
-    border: 5px solid #0ed31f; /* Adds a blue border */
+    border: 5px solid #afebd2; /* Adds a blue border */
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 /* This styles your main heading */
 h1 {
-    color: #804ff1;
+    color: #d4ee42;
     font-size: 3rem;
 }
 
@@ -52,9 +52,9 @@ nav {
     display: flex;             /* The Magic Word: Flexbox */
     justify-content: space-between; /* Pushes Logo to left, Links to right */
     align-items: center;
-    background-color: #333;
+    background-color: #eca710;
     padding: 10px 5px;
-    color: rgb(18, 230, 35);
+    color: rgb(234, 239, 240);
     position: fixed;           /* Keeps it at the top while scrolling */
     top: 0;
     left: 0;
@@ -70,7 +70,7 @@ nav a {
 
 /* Add a hover effect! */
 nav a:hover {
-    color: #007bff;
+    color: #4cdba4;
 }
 
 /* This class only turns on when we tell it to */
@@ -222,21 +222,26 @@ input, textarea {
 }
 
 
+#Home {
+    background-color: #e0cf81; /* Dark professional background */
+    padding: 60px 20px;       /* Space around the text */
+    margin-top: 60px;         /* Space so it doesn't hide under the Nav bar */
+    border-radius: 0 0 50px 50px; /* Optional: Rounds the bottom corners */
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
 #Home h1 {
     display: inline-block;
     font-size: 3rem;
     font-weight: 800;
-    /* Create a gradient background with a "shine" in the middle */
-    background: linear-gradient(to right, #333 20%, var(--primary-color) 40%, var(--primary-color) 60%, #333 80%);
-    background-size: 200% auto;
-    color: #000;
-    background-clip: text;
+    /* The Shimmer Effect */
+    background: linear-gradient(to right, #4dd8d1 20%, #fff 40%, #fff 60%, #f3f0f0 80%);
+    background-size: 150% auto;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    
-    /* The Animation */
     animation: shine 3s linear infinite;
-    margin-top: 100px;
+    margin: 0; /* Removes default spacing */
 }
 
 @keyframes shine {
@@ -244,4 +249,3 @@ input, textarea {
         background-position: 200% center;
     }
 }
-
