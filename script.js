@@ -39,7 +39,7 @@ products.forEach(product => {
                 Order via WhatsApp
             </button>
             
-            <button class="btn-small" style="background-color: #333;" onclick="window.location.href='tel:+233540252006'">
+            <button class="btn-small" style="background-color: #1af149;" onclick="window.location.href='tel:+233540252006'">
     Call to Order</button>
 
 
@@ -115,3 +115,22 @@ if (modeBtn) {
     });
 }
 
+// 8. Back to Top Logic
+const topBtn = document.getElementById("backToTop");
+
+window.onscroll = function() {
+    // Show button when user scrolls down 300px
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        topBtn.style.display = "block";
+    } else {
+        topBtn.style.display = "none";
+    }
+};
+
+// When the user clicks, scroll to the top
+topBtn.onclick = function() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth' // Makes it a nice smooth glide
+    });
+};
