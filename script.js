@@ -115,22 +115,21 @@ if (modeBtn) {
     });
 }
 
-// 8. Back to Top Logic
+// Ensure the ID matches your HTML exactly
 const topBtn = document.getElementById("backToTop");
 
 window.onscroll = function() {
-    // Show button when user scrolls down 300px
-    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+    // We check both scrollY and documentElement to be safe
+    if (window.scrollY > 300 || document.documentElement.scrollTop > 300) {
         topBtn.style.display = "block";
     } else {
         topBtn.style.display = "none";
     }
 };
 
-// When the user clicks, scroll to the top
 topBtn.onclick = function() {
     window.scrollTo({
         top: 0,
-        behavior: 'smooth' // Makes it a nice smooth glide
+        behavior: 'smooth'
     });
 };

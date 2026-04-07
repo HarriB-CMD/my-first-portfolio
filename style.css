@@ -286,4 +286,9 @@ input, textarea {
     background-color: #333; /* Turns dark on hover */
     transform: scale(1.1);
 }
+#backToTop {
+    z-index: 9999 !important; /* Forces it to stay on top of everything */
+}
+
+
 
