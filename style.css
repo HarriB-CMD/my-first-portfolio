@@ -374,4 +374,11 @@ input, textarea {
     100% { transform: scale(1); }
 }
 
+.hot-label {
+    font-size: 0.6rem;
+    display: block;
+    line-height: 1;
+    margin-bottom: 2px;
+    color: yellow; /* Makes it pop against the red badge */
+}
 

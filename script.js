@@ -32,13 +32,17 @@ const container = document.getElementById('product-container');
 
 
 products.forEach(product => {
-    // We convert to lowercase so 'Appliances' and 'appliances' both work
-    const isAppliance = product.category.toLowerCase() === 'appliances';
-    const pulseClass = isAppliance ? 'pulse' : '';
+    const isSale = product.category.toLowerCase() === 'Room Deco';
+    const pulseClass = isSale ? 'pulse' : '';
+    
+    // This adds a small "HOT" text only if it's pulsing
+    const saleLabel = isSale ? '<span class="hot-label">HOT 🔥</span>' : '';
 
     const card = `
         <div class="project-card">
-            <span class="price-badge ${pulseClass}">GH₵ ${product.price}</span>
+            <span class="price-badge ${pulseClass}">
+                ${saleLabel} GH₵ ${product.price}
+            </span>
             <img src="${product.img}">
             <h3>${product.name}</h3>
             <p style="color: gray; font-size: 0.8rem;">${product.category}</p> 
@@ -53,7 +57,7 @@ products.forEach(product => {
 
 // 4. WhatsApp Logic
 function sendOrder(name, price) {
-    const message = `ORDER ALERT! 🛒\nItem: ${name}\nPrice: $${price}\n\nIs this available please?`;
+   const message = `ORDER ALERT! 🛒\nItem: ${name}\nPrice: GH₵ ${price}\n\nIs this available please?`;
     const whatsappUrl = `https://wa.me/233540252006?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, '_blank');
 
