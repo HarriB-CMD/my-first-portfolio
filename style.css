@@ -22,7 +22,7 @@ body {
 
 /* This styles your profile image */
 img {
-    border-radius: 50%; /* Makes the image a circle */
+    border-radius: 30%; /* Makes the image a circle */
     border: 5px solid #afebd2; /* Adds a blue border */
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
@@ -99,7 +99,7 @@ nav a:hover {
     margin-top: 20px;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 400px) {
     nav {
         flex-direction: column; /* Stack logo and links vertically */
         padding: 10px;
@@ -141,19 +141,31 @@ input, textarea {
 }
 /* This targets the images inside your shop/project cards */
 .project-card img {
-    width: 100%;           /* Fills the width of the card */
-    height: 300px;         /* Sets a fixed height so they aren't "long" */
-    object-fit: cover;     /* The Magic: Crops the photo so it isn't squashed */
-    object-position: center; /* Keeps the middle of the photo visible */
-    border-radius: 8px 8px 0 0; /* Rounds only the top corners */
+    width: 80%;           /* Fills the card width */
+    height: 100px;         /* Forces a consistent height for all items */
+    object-fit: cover;     /* THE FIX: Preserves aspect ratio by cropping instead of squashing */
+    object-position: center; /* Keeps the middle of the product visible */
     display: block;
 }
 
-/* Optional: Make the card itself smaller if it feels too big */
-.project-card {
-    max-width: 350px; 
+/* 1. Update the Grid container to allow side-by-side items */
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    gap: 5px;
+    padding: 40px 20px;
+    max-width: 1200px;
     margin: 0 auto;
+    /* THE FIX: Prevents single items from stretching to fill the whole screen width */
+    justify-content: start; 
 }
+
+/* Ensure the card itself doesn't grow infinitely wide */
+.project-card {
+    max-width: 350px; /* Limits the size of a single item in a filtered category */
+    width: 100%;
+}
+
 
 #filter-section {
     margin: 40px auto;
