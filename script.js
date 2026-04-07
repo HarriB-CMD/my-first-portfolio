@@ -30,32 +30,25 @@ const products = [
 const sisterPhone = "233540252006";
 const container = document.getElementById('product-container');
 
-// 3. Create the cards - (I added the <p> for category so the filter works!)
-// 3. Create the cards
+
 products.forEach(product => {
-    // Check if it's an appliance to add the pulse effect
-    const pulseClass = product.category === 'Appliances' ? 'pulse' : '';
+    // We convert to lowercase so 'Appliances' and 'appliances' both work
+    const isAppliance = product.category.toLowerCase() === 'appliances';
+    const pulseClass = isAppliance ? 'pulse' : '';
 
     const card = `
         <div class="project-card">
-            <!-- We add the pulseClass here -->
             <span class="price-badge ${pulseClass}">GH₵ ${product.price}</span>
-            
             <img src="${product.img}">
             <h3>${product.name}</h3>
             <p style="color: gray; font-size: 0.8rem;">${product.category}</p> 
-            
-            <button class="btn-small" onclick="sendOrder('${product.name}', ${product.price})">
-                Order via WhatsApp
-            </button>
-            
-            <button class="btn-small" style="background-color: #1af149;" onclick="window.location.href='tel:+233540252006'">
-                Call to Order
-            </button>
+            <button class="btn-small" onclick="sendOrder('${product.name}', ${product.price})">Order via WhatsApp</button>
+            <button class="btn-small" style="background-color: #1af149;" onclick="window.location.href='tel:+233540252006'">Call to Order</button>
         </div>
     `;
     container.innerHTML += card;
 });
+
 
 
 // 4. WhatsApp Logic
