@@ -304,4 +304,30 @@ input, textarea {
     }
 }
 
+#timer {
+    font-family: 'Courier New', Courier, monospace; /* Gives it a digital look */
+    color: #fff;
+    text-shadow: 
+        0 0 5px #fff, 
+        0 0 10px var(--primary-color), 
+        0 0 20px var(--primary-color), 
+        0 0 40px var(--primary-color);
+    background: #000; /* Dark background makes the glow pop */
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 10px;
+    border: 2px solid #444;
+}
+
+#sale-timer h3 {
+    letter-spacing: 3px;
+    animation: flash 1s infinite; /* Makes the title flash! */
+}
+
+@keyframes flash {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    50% { opacity: 1; }
+}
 

@@ -3,7 +3,12 @@ const products = [
     { name: "Vintage Denim Jacket", price: 45.00, category: "Clothes", img: "images/7.jpg" },
     { name: "Smart Air Fryer", price: 120.00, category: "Appliances", img: "images/2.jpg" },
     { name: "Summer Floral Dress", price: 35.00, category: "Clothes", img: "images/3.jpg" },
-    
+    { name: "Summer Floral Dress", price: 35.00, category: "Clothes", img: "images/4.jpg" },
+    { name: "Summer Floral Dress", price: 35.00, category: "Clothes", img: "images/5.jpg" },
+    { name: "Summer Floral Dress", price: 35.00, category: "Clothes", img: "images/10.jpg" },
+    { name: "Summer Floral Dress", price: 35.00, category: "Clothes", img: "images/13.jpg" },
+    { name: "Summer Floral Dress", price: 35.00, category: "Clothes", img: "images/18.jpg" },
+
     // --- ADD THE SHOES HERE ---
     { 
         name: "Leather Boots", 
