@@ -367,4 +367,24 @@ input, textarea {
 /* 3. Remove the old price text from the bottom (optional) */
 /* If you keep the price at the bottom AND on the badge, it might look too busy. */
 
+/* The Pulse Animation */
+.price-badge.pulse {
+    animation: badge-pulse 2s infinite ease-in-out;
+    background-color: #ff9800; /* Optional: A different color (Orange) for appliances */
+}
+
+@keyframes badge-pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 152, 0, 0.7);
+    }
+    70% {
+        transform: scale(1.1);
+        box-shadow: 0 0 0 10px rgba(255, 152, 0, 0);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(255, 152, 0, 0);
+    }
+}
 

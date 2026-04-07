@@ -33,10 +33,13 @@ const container = document.getElementById('product-container');
 // 3. Create the cards - (I added the <p> for category so the filter works!)
 // 3. Create the cards
 products.forEach(product => {
+    // Check if it's an appliance to add the pulse effect
+    const pulseClass = product.category === 'Appliances' ? 'pulse' : '';
+
     const card = `
         <div class="project-card">
-            <!-- 1. The new Price Badge -->
-            <span class="price-badge">GH₵ ${product.price}</span>
+            <!-- We add the pulseClass here -->
+            <span class="price-badge ${pulseClass}">GH₵ ${product.price}</span>
             
             <img src="${product.img}">
             <h3>${product.name}</h3>
