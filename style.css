@@ -297,9 +297,9 @@ input, textarea {
     }
 
     #Home h1 {
-        font-size: 0.8rem;    /* Makes text smaller so it fits */
+        font-size: 1.5rem;    /* Makes text smaller so it fits */
         line-height: 1.2;     /* Adds space between lines if text wraps */
-        width: 70%;          /* Ensures it stays within its parent container */
+        width: 80%;          /* Ensures it stays within its parent container */
         word-wrap: break-word; /* Breaks long words if necessary */
     }
 }
