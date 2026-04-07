@@ -343,3 +343,28 @@ input, textarea {
     50% { opacity: 1; }
 }
 
+/* 1. Make the card a 'container' for the floating badge */
+.project-card {
+    position: relative; /* This is crucial! */
+    /* ... keep your other card styles ... */
+}
+
+/* 2. Style the floating badge */
+.price-badge {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background-color: var(--primary-color); /* The red color you picked */
+    color: white;
+    padding: 8px 12px;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    z-index: 10; /* Ensures it stays on top of the image */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+}
+
+/* 3. Remove the old price text from the bottom (optional) */
+/* If you keep the price at the bottom AND on the badge, it might look too busy. */
+
+

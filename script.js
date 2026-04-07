@@ -35,20 +35,20 @@ const container = document.getElementById('product-container');
 products.forEach(product => {
     const card = `
         <div class="project-card">
+            <!-- 1. The new Price Badge -->
+            <span class="price-badge">GH₵ ${product.price}</span>
+            
             <img src="${product.img}">
             <h3>${product.name}</h3>
             <p style="color: gray; font-size: 0.8rem;">${product.category}</p> 
-            <!-- Changed $ to GH₵ below -->
-            <p><strong>GH₵ ${product.price}</strong></p>
+            
             <button class="btn-small" onclick="sendOrder('${product.name}', ${product.price})">
                 Order via WhatsApp
             </button>
             
             <button class="btn-small" style="background-color: #1af149;" onclick="window.location.href='tel:+233540252006'">
-    Call to Order</button>
-
-
-            
+                Call to Order
+            </button>
         </div>
     `;
     container.innerHTML += card;
