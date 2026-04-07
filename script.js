@@ -32,7 +32,7 @@ const container = document.getElementById('product-container');
 
 
 products.forEach(product => {
-    const isSale = product.category.toLowerCase() === 'Room Deco';
+    const isSale = product.category.toLowerCase() === 'room deco';
     const pulseClass = isSale ? 'pulse' : '';
     
     // This adds a small "HOT" text only if it's pulsing
