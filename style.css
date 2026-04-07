@@ -110,7 +110,7 @@ nav a:hover {
     }
 
     h1 {
-        font-size: 1.8rem; /* Shrink the text so it fits */
+        font-size: 0.8rem; /* Shrink the text so it fits */
     }
 }
 
@@ -290,5 +290,18 @@ input, textarea {
     z-index: 9999 !important; /* Forces it to stay on top of everything */
 }
 
+@media (max-width: 600px) {
+    #Home {
+        padding: 40px 10px; /* Reduced padding for mobile */
+        border-radius: 0 0 30px 30px; /* Smaller curve for mobile */
+    }
+
+    #Home h1 {
+        font-size: 0.8rem;    /* Makes text smaller so it fits */
+        line-height: 1.2;     /* Adds space between lines if text wraps */
+        width: 70%;          /* Ensures it stays within its parent container */
+        word-wrap: break-word; /* Breaks long words if necessary */
+    }
+}
 
 
