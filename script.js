@@ -1,7 +1,7 @@
 
 import { products } from './products.js';
 
-
+const realUrl = "https://harrib-ecom.netlify.app";
 
 
 // 2. Settings
@@ -9,34 +9,6 @@ const sisterPhone = "233540252006";
 const container = document.getElementById('product-container');
 
 
-products.forEach(product => {
-
-
-    
-    const isSale = product.category.toLowerCase() === 'room deco';
-    const pulseClass = isSale ? 'pulse' : '';
-    
-    // This adds a small "HOT" text only if it's pulsing
-    const saleLabel = isSale ? '<span class="hot-label">HOT 🔥</span>' : '';
-
-    const card = `
-        <div class="project-card">
-            <span class="price-badge ${pulseClass}">
-                ${saleLabel} GH₵ ${product.price}
-            </span>
-            <img src="${product.img}">
-            <h3>${product.name}</h3>
-            <p style="color: gray; font-size: 0.8rem;">${product.category}</p> 
-            <button class="btn-small" onclick="sendOrder('${product.name}', ${product.price})">Order via WhatsApp</button>
-            <button class="btn-small" style="background-color: #1af149;" onclick="window.location.href='tel:+233540252006'">Call to Order</button>
-            <button class="btn-small" onclick="sendOrder('${product.name}', ${product.price})">Order</button>
-            <button class="btn-small share-btn" data-name="${product.name}">Share 🔗</button>
-        </div>
-    `;
-
-
-    container.innerHTML += card;
-});
 
 
 
@@ -163,15 +135,51 @@ startTimer();
 document.addEventListener('click', (e) => {
     if (e.target.classList.contains('share-btn')) {
         const name = e.target.getAttribute('data-name');
+        
         if (navigator.share) {
             navigator.share({
                 title: `Check out this ${name}!`,
                 text: `I found this ${name} on CHRISWALD.`,
-                url: window.location.href,
+                url: realUrl, // This now uses the public link you added at the top
             }).catch(console.error);
-        } else {
-            alert("Sharing not supported on this browser.");
         }
     }
+});
+
+// Add this to the VERY bottom of script.js
+window.filterProducts = filterProducts;
+window.filterCategory = filterCategory;
+window.sendOrder = sendOrder;
+
+// This tells the computer: "Wait until the whole page is ready, THEN do these things"
+window.addEventListener("load", () => {
+    
+    // 1. HIDE THE SPINNER
+    const loader = document.getElementById("loader");
+    if (loader) {
+        loader.style.display = "none";
+    }
+
+    // 2. DRAW THE PRODUCT CARDS
+    products.forEach(product => {
+        const isSale = product.category.toLowerCase() === 'room deco';
+        const pulseClass = isSale ? 'pulse' : '';
+        const saleLabel = isSale ? '<span class="hot-label">HOT 🔥</span>' : '';
+
+        const card = `
+            <div class="project-card">
+                <span class="price-badge ${pulseClass}">
+                    ${saleLabel} GH₵ ${product.price}
+                </span>
+                <img src="${product.img}">
+                <h3>${product.name}</h3>
+                <p style="color: gray; font-size: 0.8rem;">${product.category}</p> 
+                <button class="btn-small" onclick="sendOrder('${product.name}', ${product.price})">Order</button>
+                <button class="btn-small" style="background-color: #1af149;" onclick="window.location.href='tel:+233540252006'">Call</button>
+                <button class="btn-small share-btn" data-name="${product.name}">Share 🔗</button>
+            </div>
+        `;
+        container.innerHTML += card;
+    });
 });
 
