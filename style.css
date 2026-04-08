@@ -56,7 +56,7 @@ nav {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;         /* Changed from 97% to 100% for full coverage */
+    width: 98%;         /* Changed from 97% to 100% for full coverage */
     z-index: 1000;
     background: url('images/nav-bg.jpg') center/cover no-repeat;
     box-shadow: inset 0 0 0 1000px rgba(0,0,0,0.6); 
@@ -179,13 +179,34 @@ input, textarea {
     color: white;
 }
 
-
-
-/* The style that turns on when the button is clicked */
-.dark-mode {
-    background-color: var(--dark-bg) !important;
-    color: white !important;
+/* 1. Style the button to look modern */
+#mode-toggle {
+    padding: 10px 25px;
+    margin: 20px auto;
+    display: block;        /* Centers it on its own line */
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 25px;   /* Makes it pill-shaped */
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
+
+/* 2. Add a hover effect so users know they can click it */
+#mode-toggle:hover {
+    transform: scale(1.05);
+    background-color: #333; /* Turns dark when you hover */
+}
+
+/* 3. Keep the button visible and clean in Dark Mode */
+.dark-mode #mode-toggle {
+    background-color: #fff;
+    color: #1a1a1a;
+}
+
+
 
 /* Also make sure the cards look good in dark mode */
 .dark-mode .project-card {
@@ -198,7 +219,7 @@ input, textarea {
 .logo {
     display: inline-block;      /* Crucial: Transformation only works on block/inline-block elements */
     font-weight: bold;
-    font-size: 1.5rem;          /* Makes it stand out in the nav bar */
+    font-size: 0.7rem;          /* Makes it stand out in the nav bar */
     color: var(--primary-color);
     animation: bounce 2s infinite ease-in-out; /* 2s duration, repeats forever */
 
@@ -220,7 +241,7 @@ input, textarea {
 }
 
 .logo, nav a {
-    color: white !important;
+    color: rgb(245, 95, 8) !important;
     text-shadow: 1px 1px 2px rgba(0,0,0,0.5); /* Helps text pop over changing colors */
 }
 
@@ -296,16 +317,16 @@ input, textarea {
     font-family: 'Courier New', Courier, monospace; /* Gives it a digital look */
     color: #fff;
     text-shadow: 
-        0 0 5px #fff, 
+        0 0 5px #f70808, 
         0 0 10px var(--primary-color), 
         0 0 20px var(--primary-color), 
         0 0 40px var(--primary-color);
-    background: #000; /* Dark background makes the glow pop */
+    background: #9a9b95; /* Dark background makes the glow pop */
     display: inline-block;
     padding: 10px 20px;
     border-radius: 5px;
     margin-top: 10px;
-    border: 2px solid #444;
+    border: 2px solid #c9f552;
 }
 
 #sale-timer h3 {
@@ -358,3 +379,14 @@ input, textarea {
     color: yellow; /* Makes it pop against the red badge */
 }
 
+/* Ensure this is at the bottom of your style.css */
+body.dark-mode {
+    background-color: #1a1a1a !important;
+    color: #f4f4f9 !important;
+}
+
+/* If you want the product cards to change too */
+.dark-mode .project-card {
+    background-color: #333 !important;
+    color: white !important;
+}

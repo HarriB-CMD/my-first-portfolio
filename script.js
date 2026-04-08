@@ -1,28 +1,6 @@
-// 1. The list of products
-const products = [
-    { name: "Vintage Denim Jacket", price: 45.00, category: "Clothes", img: "images/7.jpg" },
-    { name: "Drawer with mirror", price: 120.00, category: "Room Deco", img: "images/2.jpg" },
-    { name: "Summer Floral Dress", price: 35.00, category: "Clothes", img: "images/3.jpg" },
-    { name: "Ladies Sandals", price: 35.00, category: "Sandals", img: "images/10.jpg" },
-    { name: "All white Center Table", price: 500.00, category: "Room Deco", img: "images/13.jpg" },
-    { name: "Summer Floral Dress", price: 35.00, category: "Clothes", img: "images/18.jpg" },
-    { name: "Summer Bags", price: 35.00, category: "Bags", img: "images/16.jpg" },
-    { name: "Umbrella Spray ", price: 40.00, category: "Cosmetics", img: "images/12.jpg" },
 
-    // --- ADD THE SHOES HERE ---
-    { 
-        name: "Ladies Sandals", 
-        price: 85.00, 
-        category: "Sandals", 
-        img: "images/4.jpg" 
-    },
-    { 
-        name: "Sport Sneakers", 
-        price: 55.00, 
-        category: "Shoes", 
-        img: "images/5.jpg" 
-    }
-];
+import { products } from './products.js';
+
 
 
 
@@ -32,6 +10,9 @@ const container = document.getElementById('product-container');
 
 
 products.forEach(product => {
+
+
+    
     const isSale = product.category.toLowerCase() === 'room deco';
     const pulseClass = isSale ? 'pulse' : '';
     
@@ -48,8 +29,12 @@ products.forEach(product => {
             <p style="color: gray; font-size: 0.8rem;">${product.category}</p> 
             <button class="btn-small" onclick="sendOrder('${product.name}', ${product.price})">Order via WhatsApp</button>
             <button class="btn-small" style="background-color: #1af149;" onclick="window.location.href='tel:+233540252006'">Call to Order</button>
+            <button class="btn-small" onclick="sendOrder('${product.name}', ${product.price})">Order</button>
+            <button class="btn-small share-btn" data-name="${product.name}">Share 🔗</button>
         </div>
     `;
+
+
     container.innerHTML += card;
 });
 
@@ -111,14 +96,19 @@ function filterProducts() {
     }
 }
 
-// 7. Dark Mode Logic
+// 7. Dark Mode Logic (Improved)
 const modeBtn = document.getElementById('mode-toggle');
 
 if (modeBtn) {
     modeBtn.addEventListener('click', function() {
+        // We toggle the class on the 'body' tag
         document.body.classList.toggle('dark-mode');
+        
+        // Console log helps you see if it's working behind the scenes
+        console.log("Dark mode toggled!"); 
     });
 }
+
 
 // Ensure the ID matches your HTML exactly
 const topBtn = document.getElementById("backToTop");
@@ -170,4 +160,18 @@ function startTimer() {
 // Start the timer immediately
 startTimer();
 
+document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('share-btn')) {
+        const name = e.target.getAttribute('data-name');
+        if (navigator.share) {
+            navigator.share({
+                title: `Check out this ${name}!`,
+                text: `I found this ${name} on CHRISWALD.`,
+                url: window.location.href,
+            }).catch(console.error);
+        } else {
+            alert("Sharing not supported on this browser.");
+        }
+    }
+});
 
