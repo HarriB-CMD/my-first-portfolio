@@ -284,7 +284,7 @@ input, textarea {
     border: none;
     outline: none;
     background-color: var(--primary-color);
-    color: white;
+    color: rgb(224, 228, 30);
     cursor: pointer;
     padding: 15px;
     border-radius: 50%; /* Makes it a circle */
@@ -294,7 +294,7 @@ input, textarea {
 }
 
 #backToTop:hover {
-    background-color: #333; /* Turns dark on hover */
+    background-color: #858282; /* Turns dark on hover */
     transform: scale(1.1);
 }
 #backToTop {
@@ -396,7 +396,7 @@ body.dark-mode {
 .ticker-wrapper {
     width: 100%;
     background: #000;
-    color: #fff;
+    color: oklch(86.054% 0.20996 123.376);
     padding: 10px 0;
     position: fixed;
     top: 0;
