@@ -159,20 +159,23 @@ window.addEventListener("load", () => {
     window.filterProducts = filterProducts;
     window.displayProducts = displayProducts;
 
-    Papa.parse(sheetUrl, {
-        download: true,
-        header: true,
-        skipEmptyLines: true,
-        complete: function(results) {
-            console.log("Data from sheet:", results.data);
-            displayProducts(results.data);
-            if(loader) loader.style.display = "none";
-        },
-        error: function(err) {
-            console.error("Sheet error:", err);
-            if(loader) loader.style.display = "none";
-        }
-    });
+   Papa.parse(sheetUrl, {
+    download: true,
+    header: true,
+    skipEmptyLines: true, // Speeds up loading by ignoring blank rows
+    complete: function(results) {
+        console.log("Data loaded successfully!");
+        displayProducts(results.data);
+        if(loader) loader.style.display = "none";
+    },
+    error: function(err) {
+        console.error("The Google Sheet failed to load:", err);
+        // This ensures the spinner disappears even if there's an error
+        if(loader) loader.style.display = "none";
+        alert("Wait! Your products are taking too long. Please refresh the page.");
+    }
+});
+
 });
 
 
