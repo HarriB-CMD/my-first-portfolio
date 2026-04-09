@@ -174,3 +174,35 @@ window.addEventListener("load", () => {
         }
     });
 });
+
+
+function displayProducts(products) {
+    const container = document.getElementById('product-container');
+    if(!container) return;
+    container.innerHTML = ""; 
+
+    products.forEach(product => {
+        // Skip empty rows
+        if (!product.name) return;
+
+        // Use 'clothes' or 'room deco' based on which category you want to pulse
+        const isSale = product.category.toLowerCase().trim() === 'room deco';
+        const pulseClass = isSale ? 'pulse' : '';
+        const saleLabel = isSale ? '<span class="hot-label">HOT 🔥</span>' : '';
+
+        const card = `
+            <div class="project-card">
+                <span class="price-badge ${pulseClass}">
+                    ${saleLabel} GH₵ ${product.price}
+                </span>
+                <img src="${product.img}">
+                <h3>${product.name}</h3>
+                <p style="color: gray; font-size: 0.8rem;">${product.category}</p> 
+                <button class="btn-small" onclick="sendOrder('${product.name}', ${product.price})">Order</button>
+                <button class="btn-small" style="background-color: #1af149;" onclick="window.location.href='tel:+233540252006'">Call</button>
+                <button class="btn-small share-btn" data-name="${product.name}">Share 🔗</button>
+            </div>
+        `;
+        container.innerHTML += card;
+    });
+}

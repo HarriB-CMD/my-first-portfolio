@@ -2,127 +2,110 @@
 <html lang="en">
 <head>
     <link rel="icon" href="images/logo.png">
-    <!-- This tells WhatsApp what image to show in the preview link -->
-<meta property="og:title" content="Sister's Boutique">
-<meta property="og:description" content="Check out my latest clothes and appliances!">
-<meta property="og:image" content="https://netlify.app">
-<meta property="og:url" content="https://netlify.app">
+    <!-- Meta tags for social sharing -->
+    <meta property="og:title" content="Sister's Boutique">
+    <meta property="og:description" content="Check out my latest clothes and appliances!">
+    <meta property="og:image" content="https://netlify.app">
+    <meta property="og:url" content="https://netlify.app">
 
     <meta charset="UTF-8">
-    <title>CHRISWALD</title>
+    <title>CHRISWALD IMPORTS</title>
     <link rel="stylesheet" href="style.css">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
+
+    <!-- 1. Loading Spinner -->
     <div id="loader">
-    <div class="spinner"></div>
-</div>
+        <div class="spinner"></div>
+    </div>
 
+    <!-- 2. Free Delivery Ticker -->
     <div class="ticker-wrapper">
-    <div class="ticker-text">
-        🚀 FREE DELIVERY WITHIN MAMPONG ON ALL ORDERS ABOVE GH₵ 500! — SHOP THE LATEST ARRIVALS NOW! — 🚀 FREE DELIVERY WITHIN MAMPONG ON ALL ORDERS ABOVE GH₵ 500!
+        <div class="ticker-text">
+            🚀 FREE DELIVERY WITHIN MAMPONG ON ALL ORDERS ABOVE GH₵ 500! — SHOP THE LATEST ARRIVALS NOW! — 🚀 FREE DELIVERY WITHIN MAMPONG ON ALL ORDERS ABOVE GH₵ 500!
+        </div>
     </div>
-</div>
 
-
-   
-    
-    <!-- This line looks for the image in the SAME folder -->
-    <img src="JOE.jpg" alt="A photo of me" width="300">
-
-    
+    <!-- 3. Navigation Bar -->
     <nav>
-    <div class="logo">WORLD OF QUALITY GOODS</div>
-    <h1 id="nav-title">CHRISWALD IMPORTS AND COLLECTIONS</h1>
-    <div class="links">
-        <a href="#shop">Home</a>  <!-- Now points to the Shop section -->
-        <a href="#About">About</a> <!-- Ensure this matches the ID below -->
-        <a href="#Contact">Contact</a>
-    </div>
-</nav>
-<!-- Your main shop section is now your 'Home' -->
-<section id="shop">
-    
-</section>
+        <div class="logo">WORLD OF QUALITY</div>
+        <h1 id="nav-title">CHRISWALD IMPORTS AND COLLECTIONS</h1>
+        <div class="links">
+            <a href="#shop">Home</a>
+            <a href="#About">About</a>
+            <a href="#Contact">Contact</a>
+        </div>
+    </nav>
 
-
-
-    
-<div id="sale-timer" style="background: var(--primary-color); color: white; padding: 15px; margin: 20px auto; border-radius: 10px; max-width: 600px;">
-    <h3>🔥 FLASH SALE ENDS IN:</h3>
-    <div id="timer" style="font-size: 2rem; font-weight: bold; letter-spacing: 2px;">
-        00:00:00:00
-    </div>
-    <p>Get your favorite items before the deal expires!</p>
-</div>
-
-   
-
-<section id="filter-section">
-    <!-- The Search Bar -->
-    <div class="search-container">
-        <input type="text" id="product-search" placeholder="Search clothes or appliances..." onkeyup="filterProducts()">
+    <!-- 4. Hero / Profile Section -->
+    <section id="hero" style="margin-top: 120px; text-align: center;">
+        <img src="JOE.jpg" alt="CHRISWALD Profile" width="200" style="border-radius: 50%;">
+        <p style="margin-top: 15px; font-weight: bold;">Home Of Quality Goods</p>
         <button id="mode-toggle">Switch Theme</button>
+    </section>
+
+    <!-- 5. Sale Timer -->
+    <div id="sale-timer" style="background: var(--primary-color); color: white; padding: 15px; margin: 20px auto; border-radius: 10px; max-width: 600px; text-align: center;">
+        <h3>🔥 FLASH SALE ENDS IN:</h3>
+        <div id="timer" style="font-size: 2rem; font-weight: bold; letter-spacing: 2px;">00:00:00:00</div>
+        <p>Get your favorite items before the deal expires!</p>
     </div>
 
-    <!-- Category Filters -->
-    <div class="category-buttons">
-        <button class="btn-filter active" onclick="filterCategory('all')">All</button>
-        <button class="btn-filter" onclick="filterCategory('Clothes')">Clothes</button>
-        <button class="btn-filter" onclick="filterCategory('Appliances')">Appliances</button>
-        <button class="btn-filter" onclick="filterCategory('Shoes')">Shoes</button>
-         <button class="btn-filter" onclick="filterCategory('Sandals')">Sandals</button>
-         <button class="btn-filter" onclick="filterCategory('Room Deco')">Room Deco</button>
-          <button class="btn-filter" onclick="filterCategory('Watches')">Watches</button>
-           <button class="btn-filter" onclick="filterCategory('Cosmetics')">Cosmetics</button>
-           <button class="btn-filter" onclick="filterCategory('Bags')">Bags</button>
-    
+    <!-- 6. Shop Section (Filters & Grid) -->
+    <section id="shop">
+        <div class="search-container" style="text-align: center; margin-bottom: 20px;">
+            <input type="text" id="product-search" placeholder="Search clothes or appliances..." onkeyup="filterProducts()">
+        </div>
 
-    </div>
-</section>
+        <div class="category-buttons">
+            <button class="btn-filter active" onclick="filterCategory('all')">All</button>
+            <button class="btn-filter" onclick="filterCategory('Clothes')">Clothes</button>
+            <button class="btn-filter" onclick="filterCategory('Appliances')">Appliances</button>
+            <button class="btn-filter" onclick="filterCategory('Shoes')">Shoes</button>
+            <button class="btn-filter" onclick="filterCategory('Sandals')">Sandals</button>
+            <button class="btn-filter" onclick="filterCategory('Room Deco')">Room Deco</button>
+            <button class="btn-filter" onclick="filterCategory('Bags')">Bags</button>
+        </div>
 
+        <div id="product-container" class="project-grid">
+            <!-- JavaScript will inject the products here -->
+        </div>
 
-    <div id="product-container" class="project-grid">
-<div id="no-results" style="display: none; text-align: center; padding: 20px;">
-    <h3>Sorry! 🛍️</h3>
-    <p>We couldn't find any products matching that search.</p>
-</div>
+        <div id="no-results" style="display: none; text-align: center; padding: 20px;">
+            <h3>Sorry! 🛍️</h3>
+            <p>We couldn't find any products matching that search.</p>
+        </div>
+    </section>
 
-        <!-- JavaScript will inject the products here! -->
-    </div>
-</section>
+    <!-- 7. About Section -->
+    <section id="About" style="padding: 80px 20px; text-align: center;">
+        <h2>About CHRISWALD</h2>
+        <p style="max-width: 800px; margin: 0 auto;">Welcome to CHRISWALD Imports and Collections. We specialize in bringing high-quality clothes, home appliances, and shoes directly to you. Our mission is to provide premium goods at affordable prices.</p>
+    </section>
 
+    <!-- 8. Contact Section -->
+    <section id="Contact" style="padding: 80px 20px; text-align: center; background-color: #f9f9f9;">
+        <h2>Contact Us</h2>
+        <p>📞 233540252006 | 📧 boatengh33@gmail.com</p>
+        <p>Have a question? Feel free to reach out!</p>
+        
+        <form name="contact" method="POST" data-netlify="true" action="/" style="max-width: 500px; margin: 0 auto;"> 
+            <p><input type="text" name="name" placeholder="Your Name" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></p>
+            <p><input type="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></p>
+            <p><textarea name="message" placeholder="Your Message" required style="width: 100%; padding: 10px; height: 100px; margin-bottom: 10px;"></textarea></p>
+            <p><button type="submit" class="btn-filter" style="width: 100%;">Send Message</button></p>
+        </form>
+    </section>
 
+    <!-- 9. Back to Top Button -->
+    <button id="backToTop" title="Go to top">↑</button>
 
-<section id="About" style="padding: 50px; text-align: center;">
-    <h2>About CHRISWALD</h2>
-    <p>Welcome to CHRISWALD Imports and Collections. We specialize in bringing high-quality clothes, home appliances, and shoes directly to you. Our mission is to provide premium goods at affordable prices.</p>
-</section> <!-- Close it properly here -->
-
-
-<section id="Contact" style="padding: 40px; text-align: center; background-color: #f9f9f9;">
-    <h2>Contact Us</h2>
-    <h3>233540252006</h3>
-    <p>Have a question? Feel free to reach out!</p>
-    <p>boatengh33@gmail.com</p>
-    <!-- This is the Netlify form we built earlier -->
-    <form name="contact" method="POST" data-netlify="true" action="/"> 
-        <p><input type="text" name="name" placeholder="Your Name" required></p>
-        <p><input type="email" name="email" placeholder="Your Email" required></p>
-        <p><textarea name="message" placeholder="Your Message" required></textarea></p>
-        <p><button type="submit" class="btn-filter">Send Message</button></p>
-    </form>
-</section>
-
-<!-- END OF NEW SECTIONS -->
-
-<button id="backToTop" title="Go to top">↑</button>
-
-<!-- Replace the cloudflare line with this -->
-<script src="https://cloudflare.com"></script>
-<script type="module" src="script.js"></script>
-
+    <!-- 10. Scripts (CORRECT ORDER) -->
+    <!-- PapaParse translates Google Sheets for the browser -->
+    <script src="https://cloudflare.com"></script>
+    <!-- Your main logic file -->
+    <script type="module" src="script.js"></script>
 
 </body>
 </html>
