@@ -1,5 +1,5 @@
 
-import { products } from './products.js';
+
 
 const realUrl = "https://harrib-ecom.netlify.app";
 
@@ -146,23 +146,39 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Add this to the VERY bottom of script.js
-window.filterProducts = filterProducts;
-window.filterCategory = filterCategory;
-window.sendOrder = sendOrder;
 
-// This tells the computer: "Wait until the whole page is ready, THEN do these things"
+// 1. YOUR GOOGLE SHEET LINK (Ensure you replaced the text below with your actual link)
+const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKhm4i4WIlGxTmPn37uEZDJh7zw0NVAmrjARhWy41RBcmoHJMRczAy_pbVgLLnprSCgXP-MkY2fN6Z/pub?output=csv";
+
 window.addEventListener("load", () => {
-    
-    // 1. HIDE THE SPINNER
     const loader = document.getElementById("loader");
-    if (loader) {
-        loader.style.display = "none";
-    }
 
-    // 2. DRAW THE PRODUCT CARDS
+    Papa.parse(sheetUrl, {
+        download: true,
+        header: true,
+        skipEmptyLines: true, // THIS MAKES IT LOAD FASTER
+        complete: function(results) {
+            console.log("Data from sheet:", results.data);
+            displayProducts(results.data);
+            if(loader) loader.style.display = "none";
+        },
+        error: function(err) {
+            console.error("Sheet error:", err);
+            if(loader) loader.style.display = "none";
+        }
+    });
+});
+
+function displayProducts(products) {
+    const container = document.getElementById('product-container');
+    if(!container) return;
+    container.innerHTML = ""; 
+
     products.forEach(product => {
-        const isSale = product.category.toLowerCase() === 'room deco';
+        if (!product.name) return;
+
+        // Use .trim() to prevent errors if there are extra spaces in the sheet
+        const isSale = product.category.toLowerCase().trim() === 'room deco';
         const pulseClass = isSale ? 'pulse' : '';
         const saleLabel = isSale ? '<span class="hot-label">HOT 🔥</span>' : '';
 
@@ -181,5 +197,10 @@ window.addEventListener("load", () => {
         `;
         container.innerHTML += card;
     });
-});
+}
 
+// Ensure the buttons can still find these functions
+window.displayProducts = displayProducts;
+window.filterProducts = filterProducts;
+window.filterCategory = filterCategory;
+window.sendOrder = sendOrder;
