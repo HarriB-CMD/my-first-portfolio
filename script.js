@@ -222,26 +222,21 @@ function displayProducts(products) {
     products.forEach(product => {
         if (!product.name) return;
 
-        // --- TEMPLATE A: MAIN SHOP (Added Share Button back) ---
+        // --- TEMPLATE A: MAIN SHOP ---
         const isHot = product.category.toLowerCase().trim() === 'room deco';
-        const pulseClass = isHot ? 'pulse' : '';
-        const saleLabel = isHot ? '<span class="hot-label">HOT 🔥</span>' : '';
-
         const mainCardHtml = `
             <div class="project-card">
-                <span class="price-badge ${pulseClass}">
-                    ${saleLabel} GH₵ ${product.price}
-                </span>
+                <span class="price-badge ${isHot ? 'pulse' : ''}">${isHot ? 'HOT 🔥' : ''} GH₵ ${product.price}</span>
                 <img src="${product.img}">
                 <h3>${product.name}</h3>
                 <p style="color: gray; font-size: 0.8rem;">${product.category}</p> 
                 <button class="btn-small" onclick="sendOrder('${product.name}', '${product.price}')">Order</button>
                 <button class="btn-small" style="background-color: #1af149;" onclick="window.location.href='tel:+233540252006'">Call</button>
                 <button class="btn-small share-btn" data-name="${product.name}">Share 🔗</button>
-            </div>
-        `;
+                
+            </div>`;
 
-        // --- TEMPLATE B: FEATURED SIDE CARDS (Added Share Button back) ---
+        // --- TEMPLATE B: FEATURED SIDE CARDS ---
         const featuredCardHtml = `
             <div class="project-card featured-mini" style="border: 2px solid gold;">
                 <div style="background: gold; color: black; font-weight: bold; font-size: 0.7rem; padding: 5px;">⭐ TOP SELLER</div>
@@ -249,17 +244,19 @@ function displayProducts(products) {
                 <div style="padding: 10px;">
                     <span class="limited-stock">⚠️ LIMITED STOCK</span>
                     <h3>${product.name}</h3>
-                    <span class="featured-price" style="font-weight:bold; color:green; display:block; margin:5px 0;">GH₵ ${product.price}</span>
-                    <button class="btn-small" style="width: 100%;" onclick="sendOrder('${product.name}', '${product.price}')">Order</button>
+                    <button class="btn-small" onclick="sendOrder('${product.name}', '${product.price}')">Quick Order</button>
                     <button class="btn-small share-btn" data-name="${product.name}">Share 🔗</button>
-                </div>
-            </div>
-        `;
+                    <button class="btn-small" style="background-color: #1af149; width: 100%; margin-top: 5px;" onclick="window.location.href='tel:+233540252006'">Call Now</button>
+                    </div>
+            </div>`;
 
-        if (isHot && featuredCount === 0 && leftFeatured) {
+        // NEW LOGIC: Check the 'featured' column from your spreadsheet
+        const isFeatured = product.featured && product.featured.toLowerCase().trim() === 'yes';
+
+        if (isFeatured && featuredCount === 0 && leftFeatured) {
             leftFeatured.innerHTML = featuredCardHtml;
             featuredCount++;
-        } else if (isHot && featuredCount === 1 && rightFeatured) {
+        } else if (isFeatured && featuredCount === 1 && rightFeatured) {
             rightFeatured.innerHTML = featuredCardHtml;
             featuredCount++;
         }

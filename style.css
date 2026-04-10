@@ -16,7 +16,7 @@ html {
 /* This styles the whole page */
 body {
     /* Base color for the page */
-    background-color: #1fb6f1; 
+    background-color: #2c1274; 
     
     /* Repeating SVG watermark: Chriswald World */
     background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='200' height='100' xmlns='http://www.w3.org/2000/svg'%3e%3ctext x='10' y='50' font-family='Arial' font-size='30' fill='rgba(0,0,0,0.05)' transform='rotate(-20 50 50)'%3eCHRISWALD WORLD%3c/text%3e%3c/svg%3e");
