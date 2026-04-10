@@ -437,7 +437,7 @@ nav {
     left: 0;
     width: 100%;
     height: 100%;
-    background: #fff;
+    background: #37bcce;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -465,7 +465,7 @@ nav {
 }
 
 #featured .project-card {
-    transform: scale(1.05); /* Makes featured items slightly larger */
+    transform: scale(2.05); /* Makes featured items slightly larger */
     border: 2px solid rgb(245, 45, 19);
 }
 
@@ -515,7 +515,7 @@ nav {
     border: 2px solid gold; /* Golden border for featured items */
     animation: float 4s ease-in-out infinite; /* Makes it bob up and down */
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth pop effect */
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(228, 235, 226, 0.9);
     cursor: pointer;
 }
 
@@ -538,7 +538,7 @@ nav {
 .limited-stock {
     background: #ff0000;
     color: white;
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     font-weight: bold;
     padding: 3px 8px;
     border-radius: 5px;
@@ -600,7 +600,7 @@ nav {
 /* Ensure the background branding text doesn't clash with reviews */
 .dark-mode .review-card {
     background-color: #333 !important;
-    color: white;
+    color: rgb(5, 223, 88);
 }
 
 
@@ -662,9 +662,9 @@ nav {
 
 /* Padding for Featured Product Cards */
 .side-featured .project-card {
-    padding: 20px;            /* Adds 20px of space inside the card */
-    background: #ffffff;      /* Clean white background */
-    border: 2px solid gold;   /* Matching golden border */
+    padding: 0.1px;            /* Adds 20px of space inside the card */
+    background: #11ce2b;      /* Clean white background */
+    border: 2px solid rgb(233, 229, 210);   /* Matching golden border */
     border-radius: 15px;      /* Consistent rounded corners */
     box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* Soft shadow for depth */
     box-sizing: border-box;   /* Ensures padding doesn't break the layout */
@@ -678,8 +678,8 @@ nav {
 
 .promo-icon {
     transition: opacity 0.9s ease-in-out;
-    width: 80px;
-    height: 80px;
+    width: 230px;
+    height: 230px;
     object-fit: contain;
 }
 

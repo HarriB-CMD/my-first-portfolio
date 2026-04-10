@@ -242,7 +242,7 @@ function displayProducts(products) {
                 <div style="background: gold; color: black; font-weight: bold; font-size: 0.7rem; padding: 5px;">⭐ TOP SELLER</div>
                 <img src="${product.img}" style="height: 140px; width: 100%; object-fit: cover;">
                 <div style="padding: 10px;">
-                    <span class="limited-stock">⚠️ LIMITED STOCK</span>
+                    <span class="limited-stock">⚠️ LIMITED STOCK only few left</span>
                     <h3>${product.name}</h3>
                     <button class="btn-small" onclick="sendOrder('${product.name}', '${product.price}')">Quick Order</button>
                     <button class="btn-small share-btn" data-name="${product.name}">Share 🔗</button>
