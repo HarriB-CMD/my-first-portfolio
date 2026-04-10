@@ -38,7 +38,10 @@
             <a href="#About">About</a>
             <a href="#Contact">Contact</a>
         </div>
+        
     </nav>
+
+    
 
     <!-- 4. Hero / Profile Section -->
    <!-- 4. Hero / Profile Section with Side Featured Items -->
@@ -63,15 +66,32 @@
 
 
     <!-- 5. Sale Timer -->
-    <div id="sale-timer" style="background: var(--primary-color); color: white; padding: 15px; margin: 20px auto; border-radius: 10px; max-width: 600px; text-align: center;">
-        <h3>🔥 FLASH SALE ENDS IN:</h3>
-        <div id="timer" style="font-size: 2rem; font-weight: bold; letter-spacing: 2px;">00:00:00:00</div>
-        <p>Get your favorite items before the deal expires!</p>
+   <!-- 5. Enhanced Sale Timer Section -->
+<div class="timer-section-wrapper">
+    <!-- Left Promo News -->
+    <div class="side-promo-box promo-blink">
+        <!-- WE ADDED id="news-img" HERE -->
+        <img id="news-img" src="https://icons8.com" alt="News" class="promo-icon">
+        <h4>📢 PROMO NEWS</h4>
+        <p>Free Mampong Delivery on orders over <span class="highlight">GH₵ 500!</span></p>
     </div>
 
-    <!-- 6. Shop Section (Filters & Grid) -->
-    
-    <!-- Featured Products Section -->
+    <!-- Main Flash Sale Timer -->
+    <div id="sale-timer">
+        <h3>🔥 FLASH SALE ENDS IN:</h3>
+        <div id="timer">00:00:00:00</div>
+        <p>Grab your quality goods now!</p>
+    </div>
+
+    <!-- Right Promo Discount -->
+    <div class="side-promo-box promo-blink">
+        <!-- WE ADDED id="discount-img" HERE -->
+        <img id="discount-img" src="https://icons8.com" alt="Discount" class="promo-icon">
+        <h4>💰 DISCOUNT</h4>
+        <p>Get <span class="highlight">15% OFF</span> on all Appliances this week!</p>
+    </div>
+</div>
+
 
 
     <section id="shop">
@@ -135,6 +155,15 @@
    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <!-- Your main logic file -->
     <script type="module" src="script.js"></script>
+
+<!-- Floating WhatsApp Button -->
+<a href="https://wa.me/233540252006" 
+   class="whatsapp-float" 
+   target="_blank">
+    <img src="images//lo.jpg.gif" alt="WhatsApp">
+    <span class="tooltip-text">Chat with us!</span>
+</a>
+
 
 </body>
 </html>

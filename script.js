@@ -267,3 +267,33 @@ function displayProducts(products) {
         mainContainer.innerHTML += mainCardHtml;
     });
 }
+
+// Lists of images to cycle through
+const newsImages = [
+    "images//5.jpg",
+    "images//9.jpg", // Icon for new arrivals
+    "images//15.jpg"     // Icon for storefront
+];
+
+const discountImages = [
+    "images//19.jpg",
+    "images//13.jpg",
+    "images//4.jpg"
+];
+
+let newsIndex = 0;
+let discountIndex = 0;
+
+function rotatePromoContent() {
+    // Rotate Left Image
+    newsIndex = (newsIndex + 1) % newsImages.length;
+    document.getElementById("news-img").src = newsImages[newsIndex];
+
+    // Rotate Right Image
+    discountIndex = (discountIndex + 1) % discountImages.length;
+    document.getElementById("discount-img").src = discountImages[discountIndex];
+}
+
+// Change the images every 3 seconds
+setInterval(rotatePromoContent, 3000);
+
