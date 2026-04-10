@@ -41,11 +41,26 @@
     </nav>
 
     <!-- 4. Hero / Profile Section -->
-    <section id="hero" style="margin-top: 120px; text-align: center;">
-        <img src="JOE.jpg" alt="CHRISWALD Profile" width="200" style="border-radius: 50%;">
-        <p style="margin-top: 15px; font-weight: bold;">Home Of Quality Goods</p>
+   <!-- 4. Hero / Profile Section with Side Featured Items -->
+<section id="hero-layout">
+    <!-- Left Featured Side -->
+    <div id="featured-left" class="side-featured">
+        <!-- JS will inject 1st featured item here -->
+    </div>
+
+    <!-- Center Profile -->
+    <div class="profile-center">
+        <img src="JOE.jpg" alt="CHRISWALD Profile" class="hero-img">
+        <p class="hero-tagline">Home Of Quality Goods</p>
         <button id="mode-toggle">Switch Theme</button>
-    </section>
+    </div>
+
+    <!-- Right Featured Side -->
+    <div id="featured-right" class="side-featured">
+        <!-- JS will inject 2nd featured item here -->
+    </div>
+</section>
+
 
     <!-- 5. Sale Timer -->
     <div id="sale-timer" style="background: var(--primary-color); color: white; padding: 15px; margin: 20px auto; border-radius: 10px; max-width: 600px; text-align: center;">
@@ -55,6 +70,10 @@
     </div>
 
     <!-- 6. Shop Section (Filters & Grid) -->
+    
+    <!-- Featured Products Section -->
+
+
     <section id="shop">
         <div class="search-container" style="text-align: center; margin-bottom: 20px;">
             <input type="text" id="product-search" placeholder="Search clothes or appliances..." onkeyup="filterProducts()">
@@ -79,6 +98,15 @@
             <p>We couldn't find any products matching that search.</p>
         </div>
     </section>
+
+<!-- 6.5 Customer Reviews Section -->
+<section id="reviews" style="padding: 60px 20px; text-align: center;">
+    <h2 style="color: var(--primary-color);">What Our Customers Say</h2>
+    <div id="reviews-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1200px; margin: 0 auto;">
+        <!-- JS will inject reviews here -->
+    </div>
+</section>
+
 
     <!-- 7. About Section -->
     <section id="About" style="padding: 80px 20px; text-align: center;">

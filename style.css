@@ -7,20 +7,28 @@ html {
 
 :root {
     --primary-color: #f53d3d;
-    --dark-bg: #1a1a1a;
+    --dark-bg: #ecdede;
     --light-bg: #f4f4f9;
-    --text-color: #333;
+    --text-color: #e41811;
 }
 
 
 /* This styles the whole page */
 body {
-    background-color: #2de4f1; /* Light grey background */
+    /* Base color for the page */
+    background-color: #1fb6f1; 
+    
+    /* Repeating SVG watermark: Chriswald World */
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg width='200' height='100' xmlns='http://www.w3.org/2000/svg'%3e%3ctext x='10' y='50' font-family='Arial' font-size='30' fill='rgba(0,0,0,0.05)' transform='rotate(-20 50 50)'%3eCHRISWALD WORLD%3c/text%3e%3c/svg%3e");
+    
+    background-repeat: repeat;
     font-family: Arial, sans-serif;
-    color: #f50f0f;
+    color: var(--text-color);
     text-align: center;
     padding: 50px;
+    scroll-behavior: smooth;
 }
+
 
 /* This styles your profile image */
 img {
@@ -450,3 +458,147 @@ nav {
     100% { transform: rotate(360deg); }
 }
 
+
+#featured {
+    border: 2px dashed var(--primary-color);
+    box-shadow: 0 10px 20px hwb(128 13% 25% / 0.05);
+}
+
+#featured .project-card {
+    transform: scale(1.05); /* Makes featured items slightly larger */
+    border: 2px solid rgb(245, 45, 19);
+}
+
+#hero-layout {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 120px;
+    padding: 20px;
+    gap: 20px;
+}
+
+.side-featured {
+    flex: 1;
+    max-width: 250px; /* Adjust based on your card size */
+}
+
+.profile-center {
+    flex: 1;
+    text-align: center;
+}
+
+.hero-img {
+    width: 200px;
+    border-radius: 50%;
+}
+
+/* Mobile Fix: Stack them vertically on small screens */
+@media (max-width: 800px) {
+    #hero-layout {
+        flex-direction: column;
+    }
+    .side-featured {
+        order: 2; /* Moves featured items below the profile on mobile */
+    }
+}
+
+
+/* 1. The Floating Animation */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.side-featured .project-card {
+    border: 2px solid gold; /* Golden border for featured items */
+    animation: float 4s ease-in-out infinite; /* Makes it bob up and down */
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Smooth pop effect */
+    background: rgba(255, 255, 255, 0.9);
+    cursor: pointer;
+}
+
+/* 2. The Hover "Pop" Effect */
+.side-featured .project-card:hover {
+    transform: scale(2.15) rotate(2deg); /* Grows and slightly tilts */
+    box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+    z-index: 10;
+    animation-play-state: paused; /* Stops floating while you look at it */
+}
+
+/* 3. Highlight text for Featured Items */
+.side-featured h3 {
+    color: var(--primary-color);
+    font-size: 0.9rem;
+    text-transform: uppercase;
+}
+
+/* Urgency Label Style */
+.limited-stock {
+    background: #ff0000;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 3px 8px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-bottom: 10px;
+    animation: blink 1.5s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0.5; }
+    100% { opacity: 1; }
+}
+
+/* Make the price bigger for featured items */
+.side-featured .featured-price {
+    font-size: 1.4rem;
+    color: #27ae60;
+    display: block;
+    margin: 5px 0;
+}
+
+/* Mobile Optimization for Hero Section */
+@media (max-width: 768px) {
+    #hero-layout {
+        flex-direction: column; /* Stacks items on top of each other */
+        margin-top: 150px;       /* Adds extra space for the mobile nav */
+        gap: 30px;
+    }
+
+    .profile-center {
+        order: 1; /* Keeps your photo at the top */
+    }
+
+    #featured-left {
+        order: 2; /* First featured item follows photo */
+    }
+
+    #featured-right {
+        order: 3; /* Second featured item follows first */
+    }
+
+    .side-featured {
+        width: 90%; /* Makes featured cards almost full width on mobile */
+        max-width: 300px;
+    }
+}
+
+.review-card {
+    transition: transform 0.3s ease;
+    cursor: default;
+}
+
+.review-card:hover {
+    transform: translateY(-10px); /* Lifts the card when you hover */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+}
+
+/* Ensure the background branding text doesn't clash with reviews */
+.dark-mode .review-card {
+    background-color: #333 !important;
+    color: white;
+}

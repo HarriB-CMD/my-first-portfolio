@@ -1,6 +1,4 @@
 
-
-
 const realUrl = "https://harrib-ecom.netlify.app";
 
 
@@ -136,64 +134,100 @@ document.addEventListener('click', (e) => {
     if (e.target.classList.contains('share-btn')) {
         const name = e.target.getAttribute('data-name');
         
+        // Ensure navigator.share is supported
         if (navigator.share) {
             navigator.share({
                 title: `Check out this ${name}!`,
-                text: `I found this ${name} on CHRISWALD.`,
-                url: realUrl, // This now uses the public link you added at the top
+                text: `I found this ${name} on CHRISWALD IMPORTS. Check it out here:`,
+                url: realUrl, // This uses the link at the top of your script
             }).catch(console.error);
+        } else {
+            // Fallback: If the browser doesn't support native sharing, copy to clipboard
+            navigator.clipboard.writeText(`${realUrl}`).then(() => {
+                alert("Link copied to clipboard! You can now paste it in WhatsApp.");
+            });
         }
     }
 });
 
 
+
 // 1. YOUR GOOGLE SHEET LINK (Ensure you replaced the text below with your actual link)
 const sheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKhm4i4WIlGxTmPn37uEZDJh7zw0NVAmrjARhWy41RBcmoHJMRczAy_pbVgLLnprSCgXP-MkY2fN6Z/pub?output=csv";
+const reviewsSheetUrl = "https://docs.google.com/spreadsheets/d/e/2PACX-1vSKhm4i4WIlGxTmPn37uEZDJh7zw0NVAmrjARhWy41RBcmoHJMRczAy_pbVgLLnprSCgXP-MkY2fN6Z/pub?gid=1082222210&single=true&output=csv";
+
 
 window.addEventListener("load", () => {
     const loader = document.getElementById("loader");
 
-    // MOVE THESE HERE so they are ready as soon as the page loads
     window.sendOrder = sendOrder;
     window.filterCategory = filterCategory;
     window.filterProducts = filterProducts;
     window.displayProducts = displayProducts;
 
-   Papa.parse(sheetUrl, {
-    download: true,
-    header: true,
-    skipEmptyLines: true, // Speeds up loading by ignoring blank rows
-    complete: function(results) {
-        console.log("Data loaded successfully!");
-        displayProducts(results.data);
-        if(loader) loader.style.display = "none";
-    },
-    error: function(err) {
-        console.error("The Google Sheet failed to load:", err);
-        // This ensures the spinner disappears even if there's an error
-        if(loader) loader.style.display = "none";
-        alert("Wait! Your products are taking too long. Please refresh the page.");
-    }
-});
+    // Load Products
+    Papa.parse(sheetUrl, {
+        download: true,
+        header: true,
+        skipEmptyLines: true,
+        complete: function(results) {
+            displayProducts(results.data);
+            if(loader) loader.style.display = "none";
+        }
+    });
 
+    // Load Reviews - USE THE NEW REVIEWS-SPECIFIC LINK HERE
+    Papa.parse(reviewsSheetUrl, {
+        download: true,
+        header: true,
+        complete: function(results) {
+            displayReviews(results.data);
+        }
+    });
 });
+    
+   function displayReviews(reviews) {
+    const reviewsContainer = document.getElementById('reviews-container');
+    if(!reviewsContainer) return;
+    
+    reviews.forEach(rev => {
+        if(!rev.name) return; // Skip empty rows
+        
+        const reviewHtml = `
+            <div class="review-card" style="background: white; padding: 20px; border-radius: 15px; width: 300px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); border-left: 5px solid var(--primary-color);">
+                <p style="font-size: 1.2rem; color: gold; margin-bottom: 5px;">${rev.rating}</p>
+                <p style="font-style: italic; color: #555;">"${rev.comment}"</p>
+                <h4 style="margin-top: 15px; color: var(--dark-bg);">- ${rev.name}</h4>
+                <small style="color: gray;">${rev.date}</small>
+            </div>
+        `;
+        reviewsContainer.innerHTML += reviewHtml;
+    });
+}
 
 
 function displayProducts(products) {
-    const container = document.getElementById('product-container');
-    if(!container) return;
-    container.innerHTML = ""; 
+    const mainContainer = document.getElementById('product-container');
+    const leftFeatured = document.getElementById('featured-left');
+    const rightFeatured = document.getElementById('featured-right');
+    
+    if(!mainContainer) return;
+    
+    mainContainer.innerHTML = ""; 
+    if(leftFeatured) leftFeatured.innerHTML = "";
+    if(rightFeatured) rightFeatured.innerHTML = "";
+
+    let featuredCount = 0;
 
     products.forEach(product => {
-        // Skip empty rows
         if (!product.name) return;
 
-        // Use 'clothes' or 'room deco' based on which category you want to pulse
-        const isSale = product.category.toLowerCase().trim() === 'room deco';
-        const pulseClass = isSale ? 'pulse' : '';
-        const saleLabel = isSale ? '<span class="hot-label">HOT 🔥</span>' : '';
+        // --- TEMPLATE A: MAIN SHOP (Added Share Button back) ---
+        const isHot = product.category.toLowerCase().trim() === 'room deco';
+        const pulseClass = isHot ? 'pulse' : '';
+        const saleLabel = isHot ? '<span class="hot-label">HOT 🔥</span>' : '';
 
-        const card = `
+        const mainCardHtml = `
             <div class="project-card">
                 <span class="price-badge ${pulseClass}">
                     ${saleLabel} GH₵ ${product.price}
@@ -201,11 +235,35 @@ function displayProducts(products) {
                 <img src="${product.img}">
                 <h3>${product.name}</h3>
                 <p style="color: gray; font-size: 0.8rem;">${product.category}</p> 
-                <button class="btn-small" onclick="sendOrder('${product.name}', ${product.price})">Order</button>
+                <button class="btn-small" onclick="sendOrder('${product.name}', '${product.price}')">Order</button>
                 <button class="btn-small" style="background-color: #1af149;" onclick="window.location.href='tel:+233540252006'">Call</button>
                 <button class="btn-small share-btn" data-name="${product.name}">Share 🔗</button>
             </div>
         `;
-        container.innerHTML += card;
+
+        // --- TEMPLATE B: FEATURED SIDE CARDS (Added Share Button back) ---
+        const featuredCardHtml = `
+            <div class="project-card featured-mini" style="border: 2px solid gold;">
+                <div style="background: gold; color: black; font-weight: bold; font-size: 0.7rem; padding: 5px;">⭐ TOP SELLER</div>
+                <img src="${product.img}" style="height: 140px; width: 100%; object-fit: cover;">
+                <div style="padding: 10px;">
+                    <span class="limited-stock">⚠️ LIMITED STOCK</span>
+                    <h3>${product.name}</h3>
+                    <span class="featured-price" style="font-weight:bold; color:green; display:block; margin:5px 0;">GH₵ ${product.price}</span>
+                    <button class="btn-small" style="width: 100%;" onclick="sendOrder('${product.name}', '${product.price}')">Order</button>
+                    <button class="btn-small share-btn" data-name="${product.name}">Share 🔗</button>
+                </div>
+            </div>
+        `;
+
+        if (isHot && featuredCount === 0 && leftFeatured) {
+            leftFeatured.innerHTML = featuredCardHtml;
+            featuredCount++;
+        } else if (isHot && featuredCount === 1 && rightFeatured) {
+            rightFeatured.innerHTML = featuredCardHtml;
+            featuredCount++;
+        }
+
+        mainContainer.innerHTML += mainCardHtml;
     });
 }
