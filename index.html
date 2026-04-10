@@ -164,6 +164,28 @@
     <span class="tooltip-text">Chat with us!</span>
 </a>
 
+<!-- Product Quick View Modal -->
+<div id="product-modal" class="modal-overlay" style="display: none;">
+    <div class="modal-content">
+        <span class="close-modal" onclick="closeProductModal()">&times;</span>
+        <div class="modal-grid">
+            <div class="modal-gallery">
+                <img id="modal-main-img" src="" alt="Main View">
+                <div class="thumbnail-row">
+                    <img class="thumb" onclick="changeModalImg(this.src)" id="thumb1">
+                    <img class="thumb" onclick="changeModalImg(this.src)" id="thumb2">
+                    <img class="thumb" onclick="changeModalImg(this.src)" id="thumb3">
+                </div>
+            </div>
+            <div class="modal-details">
+                <h2 id="modal-name">Product Name</h2>
+                <p id="modal-desc" style="color: gray; margin: 15px 0;"></p>
+                <h3 id="modal-price" style="color: var(--primary-color);"></h3>
+                <button id="modal-order-btn" class="btn-filter" style="width: 100%; margin-top: 20px;">Order on WhatsApp</button>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 </body>

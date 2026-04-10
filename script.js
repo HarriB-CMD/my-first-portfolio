@@ -224,17 +224,17 @@ function displayProducts(products) {
 
         // --- TEMPLATE A: MAIN SHOP ---
         const isHot = product.category.toLowerCase().trim() === 'room deco';
-        const mainCardHtml = `
-            <div class="project-card">
+               const mainCardHtml = `
+            <div class="project-card" onclick="openProductModal('${product.name}', '${product.price}', '${product.img}', '${product.img2}', '${product.img3}', '${product.category}')">
                 <span class="price-badge ${isHot ? 'pulse' : ''}">${isHot ? 'HOT 🔥' : ''} GH₵ ${product.price}</span>
                 <img src="${product.img}">
                 <h3>${product.name}</h3>
                 <p style="color: gray; font-size: 0.8rem;">${product.category}</p> 
-                <button class="btn-small" onclick="sendOrder('${product.name}', '${product.price}')">Order</button>
-                <button class="btn-small" style="background-color: #1af149;" onclick="window.location.href='tel:+233540252006'">Call</button>
-                <button class="btn-small share-btn" data-name="${product.name}">Share 🔗</button>
-                
+                <button class="btn-small" onclick="event.stopPropagation(); sendOrder('${product.name}', '${product.price}')">Order</button>
+                <button class="btn-small" style="background-color: #1af149;" onclick="event.stopPropagation(); window.location.href='tel:+233540252006'">Call</button>
+                <button class="btn-small share-btn" data-name="${product.name}" onclick="event.stopPropagation();">Share 🔗</button>
             </div>`;
+     
 
         // --- TEMPLATE B: FEATURED SIDE CARDS ---
         const featuredCardHtml = `
@@ -294,3 +294,67 @@ function rotatePromoContent() {
 // Change the images every 3 seconds
 setInterval(rotatePromoContent, 3000);
 
+function openProductModal(name, price, img1, img2, img3, category) {
+    document.getElementById('modal-name').innerText = name;
+    document.getElementById('modal-price').innerText = `GH₵ ${price}`;
+    document.getElementById('modal-desc').innerText = `Category: ${category} - High quality import.`;
+    
+    const mainImg = document.getElementById('modal-main-img');
+    mainImg.src = img1;
+    
+    // Set thumbnails
+    document.getElementById('thumb1').src = img1;
+    document.getElementById('thumb2').src = img2 || img1; // Fallback if 2nd image missing
+    document.getElementById('thumb3').src = img3 || img1;
+    
+    // Update order button
+    document.getElementById('modal-order-btn').onclick = () => sendOrder(name, price);
+    
+    document.getElementById('product-modal').style.display = 'flex';
+}
+
+function closeProductModal() {
+    document.getElementById('product-modal').style.display = 'none';
+}
+
+function changeModalImg(src) {
+    document.getElementById('modal-main-img').src = src;
+}
+
+// Function to open the popup
+window.openProductModal = function(name, price, img1, img2, img3, category) {
+    document.getElementById('modal-name').innerText = name;
+    document.getElementById('modal-price').innerText = `GH₵ ${price}`;
+    document.getElementById('modal-desc').innerText = `Category: ${category} - High Quality Import`;
+    
+    const mainImg = document.getElementById('modal-main-img');
+    mainImg.src = img1;
+    
+    // Setup thumbnails
+    document.getElementById('thumb1').src = img1;
+    document.getElementById('thumb2').src = img2 || img1; 
+    document.getElementById('thumb3').src = img3 || img1;
+    
+    // Set WhatsApp Order button inside modal
+    document.getElementById('modal-order-btn').onclick = () => sendOrder(name, price);
+    
+    document.getElementById('product-modal').style.display = 'flex';
+}
+
+// Function to close the popup
+window.closeProductModal = function() {
+    document.getElementById('product-modal').style.display = 'none';
+}
+
+// Function to switch images when clicking thumbnails
+window.changeModalImg = function(src) {
+    document.getElementById('modal-main-img').src = src;
+}
+
+// Close modal if user clicks outside the white box
+window.onclick = function(event) {
+    const modal = document.getElementById('product-modal');
+    if (event.target == modal) {
+        modal.style.display = "none";
+    }
+}
