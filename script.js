@@ -249,7 +249,7 @@ function displayProducts(products) {
                 <div class="card-buttons">
                    <button class="btn-small" onclick="event.stopPropagation(); sendOrder('${product.name}', '${product.price}')">Order</button>
                    <button class="btn-small" style="background-color: #1af149;" onclick="event.stopPropagation(); window.location.href='tel:+233540252006'">Call</button>
-                 <button class="btn-small share-btn" data-name="${product.name}" onclick="event.stopPropagation();">Share 🔗</button>
+                 <button class="share-btn btn-secondary" data-name="${product.name}">Share</button>
                    </div>
             </div>`;
 
@@ -264,7 +264,7 @@ function displayProducts(products) {
                     <h3>${product.name}</h3>
                     <p>${priceDisplay}</p>
                     <button class="btn-small" onclick="event.stopPropagation(); sendOrder('${product.name}', '${product.price}')">Quick Order</button>
-                 <button class="btn-small share-btn" data-name="${product.name}" onclick="event.stopPropagation();">Share 🔗</button>
+                 <button class="share-btn btn-secondary" data-name="${product.name}">Share</button>
                     <button class="btn-small" style="background-color: #1af149; width: 100%; margin-top: 5px;" onclick="window.location.href='tel:+233540252006'">Call Now</button>
 
                  </div>
