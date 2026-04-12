@@ -134,21 +134,21 @@ document.addEventListener('click', (e) => {
     if (e.target.classList.contains('share-btn')) {
         const name = e.target.getAttribute('data-name');
         
-        // Ensure navigator.share is supported
         if (navigator.share) {
             navigator.share({
                 title: `Check out this ${name}!`,
-                text: `I found this ${name} on CHRISWALD IMPORTS. Check it out here:`,
-                url: realUrl, // This uses the link at the top of your script
+                text: `I found this ${name} on CHRISWALD IMPORTS.`,
+                url: realUrl, 
             }).catch(console.error);
         } else {
-            // Fallback: If the browser doesn't support native sharing, copy to clipboard
+            // Fallback for desktop/older browsers
             navigator.clipboard.writeText(`${realUrl}`).then(() => {
-                alert("Link copied to clipboard! You can now paste it in WhatsApp.");
+                alert("Link copied to clipboard! Paste it in WhatsApp.");
             });
         }
     }
 });
+
 
 
 
@@ -206,53 +206,71 @@ window.addEventListener("load", () => {
 }
 
 
+
 function displayProducts(products) {
     const mainContainer = document.getElementById('product-container');
     const leftFeatured = document.getElementById('featured-left');
     const rightFeatured = document.getElementById('featured-right');
+    const ticker = document.getElementById('promo-ticker'); // Make sure this ID exists in your HTML
     
     if(!mainContainer) return;
     
     mainContainer.innerHTML = ""; 
     if(leftFeatured) leftFeatured.innerHTML = "";
     if(rightFeatured) rightFeatured.innerHTML = "";
+    if(ticker) ticker.innerHTML = "";
 
     let featuredCount = 0;
+    let tickerText = "";
 
     products.forEach(product => {
         if (!product.name) return;
 
-        // --- TEMPLATE A: MAIN SHOP ---
+        // 1. FLASH SALE / DISCOUNT LOGIC
+        let priceDisplay = `GH₵ ${product.price}`;
+        if (product.oldPrice && product.oldPrice.trim() !== "") {
+            priceDisplay = `<span style="text-decoration: line-through; color: gray; font-size: 0.8rem;">GH₵ ${product.oldPrice}</span> <span style="color: var(--primary-color);">GH₵ ${product.price}</span>`;
+        }
+
+        // 2. PROMO NEWS LOGIC
+        if (product.promoNews && product.promoNews.trim() !== "") {
+            tickerText += ` ✨ ${product.name.toUpperCase()}: ${product.promoNews} | `;
+        }
+
+        // 3. TEMPLATE A: MAIN SHOP
         const isHot = product.category.toLowerCase().trim() === 'room deco';
-               const mainCardHtml = `
-            <div class="project-card" onclick="openProductModal('${product.name}', '${product.price}', '${product.img}', '${product.img2}', '${product.img3}', '${product.category}')">
-                <span class="price-badge ${isHot ? 'pulse' : ''}">${isHot ? 'HOT 🔥' : ''} GH₵ ${product.price}</span>
+        const mainCardHtml = `
+            <div class="project-card" onclick="openProductModal('${product.name}', '${product.price}', '${product.img}', '${product.img2 || ''}', '${product.img3 || ''}', '${product.category}')">
+                <span class="price-badge ${isHot ? 'pulse' : ''}">${isHot ? 'HOT 🔥' : ''} ${product.oldPrice ? 'SALE' : ''}</span>
                 <img src="${product.img}">
                 <h3>${product.name}</h3>
+                <p class="price-text">${priceDisplay}</p>
                 <p style="color: gray; font-size: 0.8rem;">${product.category}</p> 
-                <button class="btn-small" onclick="event.stopPropagation(); sendOrder('${product.name}', '${product.price}')">Order</button>
-                <button class="btn-small" style="background-color: #1af149;" onclick="event.stopPropagation(); window.location.href='tel:+233540252006'">Call</button>
-                <button class="btn-small share-btn" data-name="${product.name}" onclick="event.stopPropagation();">Share 🔗</button>
+                <div class="card-buttons">
+                   <button class="btn-small" onclick="event.stopPropagation(); sendOrder('${product.name}', '${product.price}')">Order</button>
+                   <button class="btn-small" style="background-color: #1af149;" onclick="event.stopPropagation(); window.location.href='tel:+233540252006'">Call</button>
+                 <button class="btn-small share-btn" data-name="${product.name}" onclick="event.stopPropagation();">Share 🔗</button>
+                   </div>
             </div>`;
-     
 
-        // --- TEMPLATE B: FEATURED SIDE CARDS ---
+        // 4. TEMPLATE B: FEATURED SIDE CARDS
+        const isFeatured = product.featured && product.featured.toLowerCase().trim() === 'yes';
         const featuredCardHtml = `
-            <div class="project-card featured-mini" style="border: 2px solid gold;">
+            <div class="project-card featured-mini" style="border: 2px solid gold;" onclick="openProductModal('${product.name}', '${product.price}', '${product.img}', '${product.img2 || ''}', '${product.img3 || ''}', '${product.category}')">
                 <div style="background: gold; color: black; font-weight: bold; font-size: 0.7rem; padding: 5px;">⭐ TOP SELLER</div>
                 <img src="${product.img}" style="height: 140px; width: 100%; object-fit: cover;">
                 <div style="padding: 10px;">
-                    <span class="limited-stock">⚠️ LIMITED STOCK only few left</span>
+                    <span class="limited-stock">⚠️ LIMITED STOCK</span>
                     <h3>${product.name}</h3>
-                    <button class="btn-small" onclick="sendOrder('${product.name}', '${product.price}')">Quick Order</button>
-                    <button class="btn-small share-btn" data-name="${product.name}">Share 🔗</button>
+                    <p>${priceDisplay}</p>
+                    <button class="btn-small" onclick="event.stopPropagation(); sendOrder('${product.name}', '${product.price}')">Quick Order</button>
+                 <button class="btn-small share-btn" data-name="${product.name}" onclick="event.stopPropagation();">Share 🔗</button>
                     <button class="btn-small" style="background-color: #1af149; width: 100%; margin-top: 5px;" onclick="window.location.href='tel:+233540252006'">Call Now</button>
-                    </div>
+
+                 </div>
             </div>`;
 
-        // NEW LOGIC: Check the 'featured' column from your spreadsheet
-        const isFeatured = product.featured && product.featured.toLowerCase().trim() === 'yes';
-
+        // Fill Featured Slots
         if (isFeatured && featuredCount === 0 && leftFeatured) {
             leftFeatured.innerHTML = featuredCardHtml;
             featuredCount++;
@@ -261,9 +279,16 @@ function displayProducts(products) {
             featuredCount++;
         }
 
+        // Add to Main Shop
         mainContainer.innerHTML += mainCardHtml;
     });
+
+    // 5. ACTIVATE TICKER
+    if (ticker && tickerText !== "") {
+        ticker.innerHTML = tickerText + tickerText; // Duplicate for continuous scroll
+    }
 }
+
 
 // Lists of images to cycle through
 const newsImages = [
@@ -327,19 +352,39 @@ window.openProductModal = function(name, price, img1, img2, img3, category) {
     document.getElementById('modal-price').innerText = `GH₵ ${price}`;
     document.getElementById('modal-desc').innerText = `Category: ${category} - High Quality Import`;
     
+    // Set Main Image
     const mainImg = document.getElementById('modal-main-img');
     mainImg.src = img1;
     
-    // Setup thumbnails
-    document.getElementById('thumb1').src = img1;
-    document.getElementById('thumb2').src = img2 || img1; 
-    document.getElementById('thumb3').src = img3 || img1;
+    // Setup Thumbnails with "Hide if Empty" Logic
+    const t1 = document.getElementById('thumb1');
+    const t2 = document.getElementById('thumb2');
+    const t3 = document.getElementById('thumb3');
+
+    // Always show the first thumbnail
+    t1.src = img1;
+    t1.style.display = "block";
+
+    // Show or Hide 2nd Thumbnail
+    if (img2 && img2.trim() !== "" && img2 !== "undefined") {
+        t2.src = img2;
+        t2.style.display = "block";
+    } else {
+        t2.style.display = "none";
+    }
+
+    // Show or Hide 3rd Thumbnail
+    if (img3 && img3.trim() !== "" && img3 !== "undefined") {
+        t3.src = img3;
+        t3.style.display = "block";
+    } else {
+        t3.style.display = "none";
+    }
     
-    // Set WhatsApp Order button inside modal
     document.getElementById('modal-order-btn').onclick = () => sendOrder(name, price);
-    
     document.getElementById('product-modal').style.display = 'flex';
 }
+
 
 // Function to close the popup
 window.closeProductModal = function() {
