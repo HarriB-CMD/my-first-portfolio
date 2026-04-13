@@ -1,20 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <link rel="icon" type="image/png" href="images/logo.png">
 
-    
+
     <!-- Meta tags for social sharing -->
-    <meta property="og:title" content="Sister's Boutique">
-    <meta property="og:description" content="Check out my latest clothes and appliances!">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="CHRISWALD IMPORTS | World of Quality">
+    <meta property="og:description"
+        content="Shop the latest clothes, appliances, shoes, and room deco at affordable prices.">
+    <!-- Use your actual logo or a product image here -->
     <meta property="og:image" content="https://netlify.app">
-    <meta property="og:url" content="https://netlify.app">
+    <meta property="og:url" content="https://harrib-ecom.netlify.app">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:title" content="CHRISWALD IMPORTS">
+    <meta property="twitter:description" content="Quality clothes and appliances delivered to you.">
+    <meta property="twitter:image" content="https://netlify.app">
 
     <meta charset="UTF-8">
     <title>CHRISWALD IMPORTS</title>
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
 <body>
 
     <!-- 1. Loading Spinner -->
@@ -25,7 +36,8 @@
     <!-- 2. Free Delivery Ticker -->
     <div class="ticker-wrapper">
         <div class="ticker-text">
-            🚀 FREE DELIVERY WITHIN MAMPONG ON ALL ORDERS ABOVE GH₵ 500! — SHOP THE LATEST ARRIVALS NOW! — 🚀 FREE DELIVERY WITHIN MAMPONG ON ALL ORDERS ABOVE GH₵ 500!
+            🚀 FREE DELIVERY WITHIN MAMPONG ON ALL ORDERS ABOVE GH₵ 500! — SHOP THE LATEST ARRIVALS NOW! — 🚀 FREE
+            DELIVERY WITHIN MAMPONG ON ALL ORDERS ABOVE GH₵ 500!
         </div>
     </div>
 
@@ -38,65 +50,66 @@
             <a href="#About">About</a>
             <a href="#Contact">Contact</a>
         </div>
-        
+
     </nav>
 
-    
+
 
     <!-- 4. Hero / Profile Section -->
-   <!-- 4. Hero / Profile Section with Side Featured Items -->
-<section id="hero-layout">
-    <!-- Left Featured Side -->
-    <div id="featured-left" class="side-featured">
-        <!-- JS will inject 1st featured item here -->
-    </div>
+    <!-- 4. Hero / Profile Section with Side Featured Items -->
+    <section id="hero-layout">
+        <!-- Left Featured Side -->
+        <div id="featured-left" class="side-featured">
+            <!-- JS will inject 1st featured item here -->
+        </div>
 
-    <!-- Center Profile -->
-    <div class="profile-center">
-        <img src="JOE.jpg" alt="CHRISWALD Profile" class="hero-img">
-        <p class="hero-tagline">Home Of Quality Goods</p>
-        <button id="mode-toggle">Switch Theme</button>
-    </div>
+        <!-- Center Profile -->
+        <div class="profile-center">
+            <img src="JOE.jpg" alt="CHRISWALD Profile" class="hero-img">
+            <p class="hero-tagline">Home Of Quality Goods</p>
+            <button id="mode-toggle">Switch Theme</button>
+        </div>
 
-    <!-- Right Featured Side -->
-    <div id="featured-right" class="side-featured">
-        <!-- JS will inject 2nd featured item here -->
-    </div>
-</section>
+        <!-- Right Featured Side -->
+        <div id="featured-right" class="side-featured">
+            <!-- JS will inject 2nd featured item here -->
+        </div>
+    </section>
 
 
     <!-- 5. Sale Timer -->
-   <!-- 5. Enhanced Sale Timer Section -->
-<div class="timer-section-wrapper">
-    <!-- Left Promo News -->
-    <div class="side-promo-box promo-blink">
-        <!-- WE ADDED id="news-img" HERE -->
-        <img id="news-img" src="https://icons8.com" alt="News" class="promo-icon">
-        <h4>📢 PROMO NEWS</h4>
-        <p>Free Mampong Delivery on orders over <span class="highlight">GH₵ 500!</span></p>
-    </div>
+    <!-- 5. Enhanced Sale Timer Section -->
+    <div class="timer-section-wrapper">
+        <!-- Left Promo News -->
+        <div class="side-promo-box promo-blink">
+            <!-- WE ADDED id="news-img" HERE -->
+            <img id="news-img" src="https://icons8.com" alt="News" class="promo-icon">
+            <h4>📢 PROMO ooOOO</h4>
+            <p>Free Mampong Delivery on orders over <span class="highlight">GH₵ 500!</span></p>
+        </div>
 
-    <!-- Main Flash Sale Timer -->
-    <div id="sale-timer">
-        <h3>🔥 FLASH SALE ENDS IN:</h3>
-        <div id="timer">00:00:00:00</div>
-        <p>Grab your quality goods now!</p>
-    </div>
+        <!-- Main Flash Sale Timer -->
+        <div id="sale-timer">
+            <h3>🔥 FLASH SALE ENDS IN:</h3>
+            <div id="timer">00:00:00:00</div>
+            <p>Grab your quality goods now!</p>
+        </div>
 
-    <!-- Right Promo Discount -->
-    <div class="side-promo-box promo-blink">
-        <!-- WE ADDED id="discount-img" HERE -->
-        <img id="discount-img" src="https://icons8.com" alt="Discount" class="promo-icon">
-        <h4>💰 DISCOUNT</h4>
-        <p>Get <span class="highlight">15% OFF</span> on all Appliances this week!</p>
+        <!-- Right Promo Discount -->
+        <div class="side-promo-box promo-blink">
+            <!-- WE ADDED id="discount-img" HERE -->
+            <img id="discount-img" src="https://icons8.com" alt="Discount" class="promo-icon">
+            <h4>💰 DISCOUNT</h4>
+            <p>Get <span class="highlight">15% OFF</span> on all Appliances this week!</p>
+        </div>
     </div>
-</div>
 
 
 
     <section id="shop">
         <div class="search-container" style="text-align: center; margin-bottom: 20px;">
-            <input type="text" id="product-search" placeholder="Search clothes or appliances..." onkeyup="filterProducts()">
+            <input type="text" id="product-search" placeholder="Search clothes or appliances..."
+                onkeyup="filterProducts()">
         </div>
 
         <div class="category-buttons">
@@ -119,18 +132,21 @@
         </div>
     </section>
 
-<!-- 6.5 Customer Reviews Section -->
-<section id="reviews" style="padding: 60px 20px; text-align: center;">
-    <h2 style="color: var(--primary-color);">What Our Customers Say</h2>
-    <div id="reviews-container" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1200px; margin: 0 auto;">
-        <!-- JS will inject reviews here -->
-    </div>
-</section>
+    <!-- 6.5 Customer Reviews Section -->
+    <section id="reviews" style="padding: 60px 20px; text-align: center;">
+        <h2 style="color: var(--primary-color);">What Our Customers Say</h2>
+        <div id="reviews-container"
+            style="display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 1200px; margin: 0 auto;">
+            <!-- JS will inject reviews here -->
+        </div>
+    </section>
 
     <!-- 7. About Section -->
     <section id="About" style="padding: 80px 20px; text-align: center;">
         <h2>About CHRISWALD</h2>
-        <p style="max-width: 800px; margin: 0 auto;">Welcome to CHRISWALD Imports and Collections. We specialize in bringing high-quality clothes, home appliances, and shoes directly to you. Our mission is to provide premium goods at affordable prices.</p>
+        <p style="max-width: 800px; margin: 0 auto;">Welcome to CHRISWALD Imports and Collections. We specialize in
+            bringing high-quality clothes, home appliances, and shoes directly to you. Our mission is to provide premium
+            goods at affordable prices.</p>
     </section>
 
     <!-- 8. Contact Section -->
@@ -138,11 +154,14 @@
         <h2>Contact Us</h2>
         <p>📞 233540252006 | 📧 boatengh33@gmail.com</p>
         <p>Have a question? Feel free to reach out!</p>
-        
-        <form name="contact" method="POST" data-netlify="true" action="/" style="max-width: 500px; margin: 0 auto;"> 
-            <p><input type="text" name="name" placeholder="Your Name" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></p>
-            <p><input type="email" name="email" placeholder="Your Email" required style="width: 100%; padding: 10px; margin-bottom: 10px;"></p>
-            <p><textarea name="message" placeholder="Your Message" required style="width: 100%; padding: 10px; height: 100px; margin-bottom: 10px;"></textarea></p>
+
+        <form name="contact" method="POST" data-netlify="true" action="/" style="max-width: 500px; margin: 0 auto;">
+            <p><input type="text" name="name" placeholder="Your Name" required
+                    style="width: 100%; padding: 10px; margin-bottom: 10px;"></p>
+            <p><input type="email" name="email" placeholder="Your Email" required
+                    style="width: 100%; padding: 10px; margin-bottom: 10px;"></p>
+            <p><textarea name="message" placeholder="Your Message" required
+                    style="width: 100%; padding: 10px; height: 100px; margin-bottom: 10px;"></textarea></p>
             <p><button type="submit" class="btn-filter" style="width: 100%;">Send Message</button></p>
         </form>
     </section>
@@ -152,41 +171,41 @@
 
     <!-- 10. Scripts (CORRECT ORDER) -->
     <!-- PapaParse translates Google Sheets for the browser -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
     <!-- Your main logic file -->
     <script type="module" src="script.js"></script>
 
-<!-- Floating WhatsApp Button -->
-<a href="https://wa.me/233540252006?text=Hello%20Chriswald"
-   class="whatsapp-float" 
-   target="_blank">
-    <img src="images/lo.jpg.gif" alt="WhatsApp">
-    <span class="tooltip-text">Chat with us!</span>
-</a>
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/233540252006?text=Hello%20Chriswald" class="whatsapp-float" target="_blank">
+        <img src="images/lo.jpg.gif" alt="WhatsApp">
+        <span class="tooltip-text">Chat with us!</span>
+    </a>
 
-<!-- Product Quick View Modal -->
-<div id="product-modal" class="modal-overlay" style="display: none;">
-    <div class="modal-content">
-        <span class="close-modal" onclick="closeProductModal()">&times;</span>
-        <div class="modal-grid">
-            <div class="modal-gallery">
-                <img id="modal-main-img" src="" alt="Main View">
-                <div class="thumbnail-row">
-                    <img class="thumb" onclick="changeModalImg(this.src)" id="thumb1">
-                    <img class="thumb" onclick="changeModalImg(this.src)" id="thumb2">
-                    <img class="thumb" onclick="changeModalImg(this.src)" id="thumb3">
+    <!-- Product Quick View Modal -->
+    <div id="product-modal" class="modal-overlay" style="display: none;">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeProductModal()">&times;</span>
+            <div class="modal-grid">
+                <div class="modal-gallery">
+                    <img id="modal-main-img" src="" alt="Main View">
+                    <div class="thumbnail-row">
+                        <img class="thumb" onclick="changeModalImg(this.src)" id="thumb1">
+                        <img class="thumb" onclick="changeModalImg(this.src)" id="thumb2">
+                        <img class="thumb" onclick="changeModalImg(this.src)" id="thumb3">
+                    </div>
                 </div>
-            </div>
-            <div class="modal-details">
-                <h2 id="modal-name">Product Name</h2>
-                <p id="modal-desc" style="color: gray; margin: 15px 0;"></p>
-                <h3 id="modal-price" style="color: var(--primary-color);"></h3>
-                <button id="modal-order-btn" class="btn-filter" style="width: 100%; margin-top: 20px;">Order on WhatsApp</button>
+                <div class="modal-details">
+                    <h2 id="modal-name">Product Name</h2>
+                    <p id="modal-desc" style="color: gray; margin: 15px 0;"></p>
+                    <h3 id="modal-price" style="color: var(--primary-color);"></h3>
+                    <button id="modal-order-btn" class="btn-filter" style="width: 100%; margin-top: 20px;">Order on
+                        WhatsApp</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
 </body>
+
 </html>

@@ -364,8 +364,8 @@ input, textarea {
     z-index: 10;
     display: inline-block; /* Crucial for animations to work */
     background-color: var(--primary-color);
-    color: white;
-    padding: 8px 12px;
+    color: rgb(231, 236, 232);
+    padding: 8px 2px;
     border-radius: 5px;
     font-weight: bold;
 }

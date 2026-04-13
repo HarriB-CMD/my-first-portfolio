@@ -229,7 +229,7 @@ function displayProducts(products) {
         // 1. FLASH SALE / DISCOUNT LOGIC
         let priceDisplay = `GH₵ ${product.price}`;
         if (product.oldPrice && product.oldPrice.trim() !== "") {
-            priceDisplay = `<span style="text-decoration: line-through; color: gray; font-size: 0.8rem;">GH₵ ${product.oldPrice}</span> <span style="color: var(--primary-color);">GH₵ ${product.price}</span>`;
+            priceDisplay = `<span style="text-decoration: line-through; color: yellow; font-size: 0.9rem;">GH₵ ${product.oldPrice}</span> <span style="color: var(--primary-color);">GH₵ ${product.price}</span>`;
         }
 
         // 2. PROMO NEWS LOGIC
@@ -241,11 +241,11 @@ function displayProducts(products) {
         const isHot = product.category.toLowerCase().trim() === 'room deco';
         const mainCardHtml = `
             <div class="project-card" onclick="openProductModal('${product.name}', '${product.price}', '${product.img}', '${product.img2 || ''}', '${product.img3 || ''}', '${product.category}')">
-                <span class="price-badge ${isHot ? 'pulse' : ''}">${isHot ? 'HOT 🔥' : ''} ${product.oldPrice ? 'SALE' : ''}</span>
+                <span class="price-badge ${isHot ? 'pulse' : ''}">${isHot ? 'HOT SALE 🔥' : ''} ${product.oldPrice ? 'BUY' : 'BUY'}</span>
                 <img src="${product.img}">
                 <h3>${product.name}</h3>
                 <p class="price-text">${priceDisplay}</p>
-                <p style="color: gray; font-size: 0.8rem;">${product.category}</p> 
+                <p style="color: PINK; font-size: 0.9rem;">${product.category}</p> 
                 <div class="card-buttons">
                    <button class="btn-small" onclick="event.stopPropagation(); sendOrder('${product.name}', '${product.price}')">Order</button>
                    <button class="btn-small" style="background-color: #1af149;" onclick="event.stopPropagation(); window.location.href='tel:+233540252006'">Call</button>
@@ -264,7 +264,7 @@ function displayProducts(products) {
                     <h3>${product.name}</h3>
                     <p>${priceDisplay}</p>
                     <button class="btn-small" onclick="event.stopPropagation(); sendOrder('${product.name}', '${product.price}')">Quick Order</button>
-                 <button class="share-btn btn-secondary" data-name="${product.name}">Share</button>
+                    <button class="share-btn btn-secondary" data-name="${product.name}">Share</button>
                     <button class="btn-small" style="background-color: #1af149; width: 100%; margin-top: 5px;" onclick="window.location.href='tel:+233540252006'">Call Now</button>
 
                  </div>
